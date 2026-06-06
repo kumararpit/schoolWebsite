@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: goura-city-montessori
+    env: node
+    region: singapore   # closest to India
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000       # Render assigns this automatically, but we declare it
+      - key: SESSION_SECRET
+        sync: false        # set manually in Render dashboard
+      - key: RESEND_API_KEY
+        sync: false        # set manually in Render dashboard
+      - key: MONGODB_URI
+        sync: false        # set manually in Render dashboard
+    healthCheckPath: /
