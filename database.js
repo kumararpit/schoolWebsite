@@ -4,14 +4,35 @@ require('dotenv').config();
 
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/schoolWebsite';
 
-mongoose.connect(MONGODB_URI)
-  .then(() => {
-    console.log('Connected to MongoDB at', MONGODB_URI.replace(/:([^:@]+)@/, ':****@'));
-    checkAndSeed();
-  })
-  .catch((err) => {
-    console.error('Error connecting to MongoDB:', err);
-  });
+// Disable buffering so failed queries fail fast with a clear error
+// instead of hanging silently for 10 seconds
+mongoose.set('bufferCommands', false);
+
+async function connectWithRetry(retries = 5, delay = 3000) {
+  for (let i = 1; i <= retries; i++) {
+    try {
+      await mongoose.connect(MONGODB_URI, {
+        serverSelectionTimeoutMS: 10000,  // give Atlas 10s to respond
+        socketTimeoutMS: 45000,
+        connectTimeoutMS: 10000,
+      });
+      console.log('Connected to MongoDB at', MONGODB_URI.replace(/:([^:@]+)@/, ':****@'));
+      checkAndSeed();
+      return;
+    } catch (err) {
+      console.error(`MongoDB connection attempt ${i}/${retries} failed:`, err.message);
+      if (i < retries) {
+        console.log(`Retrying in ${delay / 1000}s...`);
+        await new Promise(res => setTimeout(res, delay));
+        delay = Math.min(delay * 1.5, 15000); // exponential backoff, max 15s
+      } else {
+        console.error('All MongoDB connection attempts failed. Dynamic features will be unavailable.');
+      }
+    }
+  }
+}
+
+connectWithRetry();
 
 // Define schemas
 const inquirySchema = new mongoose.Schema({
