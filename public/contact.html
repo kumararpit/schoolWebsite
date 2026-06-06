@@ -15,9 +15,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+  <script src="js/settings.js"></script>
 </head>
 
 <body>
+
+  <!-- Alert Banner -->
+  <div class="alert-banner" style="background:var(--primary);color:var(--on-primary);text-align:center;padding:10px var(--gutter);font-size:13px;font-weight:600;letter-spacing:0.03em;position:relative;z-index:1001;">
+    <span class="dynamic-announcement">Admissions Open for playground to Class 8! Estd. 2022. Experience premium Montessori education.</span>
+  </div>
 
   <!-- Header -->
   <header class="site-header">
@@ -156,7 +162,7 @@
                 <span class="material-symbols-outlined" style="color:var(--primary);">call</span>
                 <div>
                   <p class="label-md" style="color:var(--primary);">Phone</p>
-                  <p class="body-md"><a href="tel:+919450262541" style="color:inherit;text-decoration:none;white-space:nowrap;">+91 94502 62541</a></p>
+                  <p class="body-md"><a href="tel:+919450262541" class="dynamic-phone" style="color:inherit;text-decoration:none;white-space:nowrap;">+91 94502 62541</a></p>
                 </div>
               </div>
               <div
@@ -164,20 +170,20 @@
                 <span class="material-symbols-outlined" style="color:var(--primary);">mail</span>
                 <div>
                   <p class="label-md" style="color:var(--primary);">Email</p>
-                  <p class="body-md"><a href="mailto:gauracitymontessori@gmail.com" style="color:inherit;text-decoration:none;white-space:nowrap;">gauracitymontessori@gmail.com</a></p>
+                  <p class="body-md"><a href="mailto:gauracitymontessori@gmail.com" class="dynamic-email" style="color:inherit;text-decoration:none;white-space:nowrap;">gauracitymontessori@gmail.com</a></p>
                 </div>
               </div>
-              <a href="https://www.google.com/maps/place/Gaura+City+Montessori/@25.9652814,80.1351464,17z/data=!3m1!4b1!4m6!3m5!1s0x399cfdc88671e34f:0x729d6f315a3fd9b7!8m2!3d25.9652814!4d80.1351464!16s%2Fg%2F11s8zf99yz!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank"
+              <a href="https://www.google.com/maps/place/Gaura+City+Montessori/@25.9652814,80.1351464,17z/data=!3m1!4b1!4m6!3m5!1s0x399cfdc88671e34f:0x729d6f315a3fd9b7!8m2!3d25.9652814!4d80.1351464!16s%2Fg%2F11s8zf99yz!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="dynamic-map-link"
                 style="grid-column:span 2;padding:var(--sp-md);border:1px solid var(--outline-variant);background:white;display:flex;align-items:flex-start;gap:var(--sp-base);text-decoration:none;color:inherit;">
                 <span class="material-symbols-outlined" style="color:var(--primary);">location_on</span>
                 <div>
                   <p class="label-md" style="color:var(--primary);">Address</p>
-                  <p class="body-md">Civil Lines, Near District Hospital, Hamirpur, Uttar Pradesh 210301</p>
+                  <p class="body-md dynamic-address">Civil Lines, Near District Hospital, Hamirpur, Uttar Pradesh 210301</p>
                 </div>
               </a>
             </div>
             <!-- Map Placeholder -->
-            <a href="https://www.google.com/maps/place/Gaura+City+Montessori/@25.9652814,80.1351464,17z/data=!3m1!4b1!4m6!3m5!1s0x399cfdc88671e34f:0x729d6f315a3fd9b7!8m2!3d25.9652814!4d80.1351464!16s%2Fg%2F11s8zf99yz!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank"
+            <a href="https://www.google.com/maps/place/Gaura+City+Montessori/@25.9652814,80.1351464,17z/data=!3m1!4b1!4m6!3m5!1s0x399cfdc88671e34f:0x729d6f315a3fd9b7!8m2!3d25.9652814!4d80.1351464!16s%2Fg%2F11s8zf99yz!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="dynamic-map-link"
               style="display:block;aspect-ratio:16/9;width:100%;background:var(--surface-variant);border:1px solid var(--outline-variant);position:relative;overflow:hidden;text-decoration:none;">
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwHIjF52WCCzS8klPIUQi1PxJEw0p7br0fO_ecn8c8EoECCLr3GLUOKu_zforzY-opqa_AJCVMjRoAhcCNNbGWmVjZAH60lhppcn5uO3fw_ZMekUiUxdS-Mug3vM1nxJ8BYRB4DrB3kgmGaNLl9dgGH9AiBGPMSmVZnILknsFlR_9LMwRrSKIxsud4jmVvR5_RiGL397PCA35IbDFh2bAj6QG1i6AIik5XhEcn9olbb8yQFILr0_V5blt51z4OwfntjZ8gqk4gj6SA"
@@ -201,16 +207,16 @@
               <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md);">
                 <div class="form-group" style="margin-bottom:0;">
                   <label>Parent's Name</label>
-                  <input type="text" placeholder="John Doe" />
+                  <input type="text" id="parent-name" placeholder="John Doe" required />
                 </div>
                 <div class="form-group" style="margin-bottom:0;">
                   <label>Child's Name</label>
-                  <input type="text" placeholder="Jane Doe" />
+                  <input type="text" id="child-name" placeholder="Jane Doe" required />
                 </div>
               </div>
               <div class="form-group" style="margin-bottom:0;">
                 <label>Seeking Admission For</label>
-                <select>
+                <select id="grade-level" required>
                   <option>Playground</option>
                   <option>Nursery / LKG / UKG</option>
                   <option>Class 1 - 5</option>
@@ -219,11 +225,11 @@
               </div>
               <div class="form-group" style="margin-bottom:0;">
                 <label>Phone Number</label>
-                <input type="tel" placeholder="+91 00000 00000" />
+                <input type="tel" id="phone-number" placeholder="+91 00000 00000" required />
               </div>
               <div class="form-group" style="margin-bottom:0;">
                 <label>Your Message</label>
-                <textarea rows="4" placeholder="Tell us more about your child or ask a specific question..."></textarea>
+                <textarea id="message" rows="4" placeholder="Tell us more about your child or ask a specific question..."></textarea>
               </div>
               <button type="submit" class="btn-submit" id="submit-btn">Submit Inquiry</button>
             </form>
@@ -246,7 +252,7 @@
           <h4 class="label-md" style="font-weight:700;margin-bottom:var(--sp-xs);">Quick Links</h4>
           <a href="#" class="body-md" style="color:var(--on-surface-variant);">Privacy Policy</a>
           <a href="#" class="body-md" style="color:var(--on-surface-variant);">Terms of Service</a>
-          <a href="https://www.google.com/maps/place/Gaura+City+Montessori/@25.9652814,80.1351464,17z/data=!3m1!4b1!4m6!3m5!1s0x399cfdc88671e34f:0x729d6f315a3fd9b7!8m2!3d25.9652814!4d80.1351464!16s%2Fg%2F11s8zf99yz!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="body-md" style="color:var(--on-surface-variant);">Location</a>
+          <a href="https://www.google.com/maps/place/Gaura+City+Montessori/@25.9652814,80.1351464,17z/data=!3m1!4b1!4m6!3m5!1s0x399cfdc88671e34f:0x729d6f315a3fd9b7!8m2!3d25.9652814!4d80.1351464!16s%2Fg%2F11s8zf99yz!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="body-md dynamic-map-link" style="color:var(--on-surface-variant);">Location</a>
           <a href="#" class="body-md" style="color:var(--on-surface-variant);">Sitemap</a>
         </div>
         <div>
@@ -296,22 +302,46 @@
     document.querySelectorAll('.fade-in-section').forEach(el => observer.observe(el));
 
     // Form interaction
-    document.getElementById('inquiry-form').addEventListener('submit', function (e) {
+    document.getElementById('inquiry-form').addEventListener('submit', async function (e) {
       e.preventDefault();
       const btn = document.getElementById('submit-btn');
       const originalText = btn.innerText;
       btn.innerText = 'Sending...';
       btn.disabled = true;
+
+      const parentName = document.getElementById('parent-name').value;
+      const childName = document.getElementById('child-name').value;
+      const gradeLevel = document.getElementById('grade-level').value;
+      const phoneNumber = document.getElementById('phone-number').value;
+      const message = document.getElementById('message').value;
+
+      try {
+        const res = await fetch('/api/inquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ parentName, childName, gradeLevel, phoneNumber, message })
+        });
+
+        if (res.ok) {
+          btn.innerText = 'Inquiry Sent!';
+          btn.style.background = 'var(--tertiary)';
+          this.reset();
+        } else {
+          const data = await res.json();
+          alert(data.error || 'Failed to submit inquiry.');
+          btn.innerText = 'Error!';
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Network error. Failed to submit inquiry.');
+        btn.innerText = 'Error!';
+      }
+
       setTimeout(() => {
-        btn.innerText = 'Inquiry Sent!';
-        btn.style.background = 'var(--tertiary)';
-        this.reset();
-        setTimeout(() => {
-          btn.innerText = originalText;
-          btn.style.background = 'var(--primary)';
-          btn.disabled = false;
-        }, 3000);
-      }, 1500);
+        btn.innerText = originalText;
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 3000);
     });
   </script>
 </body>

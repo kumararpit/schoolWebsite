@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Goura City Montessori</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    body {
+      background: var(--surface-container-lowest);
+      font-family: 'Open Sans', sans-serif;
+      margin: 0;
+      color: var(--on-background);
+    }
+
+    .admin-header {
+      background: white;
+      border-bottom: 1px solid var(--outline-variant);
+      padding: var(--sp-base) var(--sp-md);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-logo h1 {
+      font-family: 'Literata', serif;
+      color: var(--primary);
+      font-size: 20px;
+      margin: 0;
+    }
+
+    .header-logo span {
+      font-size: 12px;
+      color: var(--on-surface-variant);
+    }
+
+    .header-nav {
+      display: flex;
+      gap: var(--sp-md);
+      align-items: center;
+    }
+
+    .btn-logout {
+      background: none;
+      color: var(--error);
+      border: 1px solid var(--error);
+      padding: 6px 12px;
+      border-radius: var(--radius-default);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .btn-logout:hover {
+      background: var(--error-container);
+      color: var(--on-error-container);
+    }
+
+    .admin-container {
+      max-width: 1200px;
+      margin: var(--sp-md) auto;
+      padding: 0 var(--sp-md);
+    }
+
+    /* Tab Controls */
+    .tabs-bar {
+      display: flex;
+      border-bottom: 2px solid var(--outline-variant);
+      gap: var(--sp-base);
+      margin-bottom: var(--sp-md);
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--on-surface-variant);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-base);
+    }
+
+    .tab-btn:hover {
+      color: var(--primary);
+    }
+
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Cards and forms */
+    .panel-card {
+      background: white;
+      border: 1px solid var(--outline-variant);
+      border-radius: var(--radius-lg);
+      padding: var(--sp-md);
+      box-shadow: var(--sun-baked-shadow);
+      margin-bottom: var(--sp-md);
+    }
+
+    .panel-title {
+      font-family: 'Literata', serif;
+      color: var(--primary);
+      font-size: 20px;
+      margin-top: 0;
+      margin-bottom: var(--sp-sm);
+      border-bottom: 1px solid var(--outline-variant);
+      padding-bottom: var(--sp-xs);
+    }
+
+    /* Inquiries table style */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--sp-base);
+    }
+
+    th {
+      text-align: left;
+      background: var(--surface-container-low);
+      padding: 12px;
+      font-weight: 700;
+      color: var(--on-surface-variant);
+      border-bottom: 2px solid var(--outline-variant);
+      font-size: 14px;
+    }
+
+    td {
+      padding: 12px;
+      border-bottom: 1px solid var(--outline-variant);
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    tr:hover td {
+      background: var(--surface-container-low);
+    }
+
+    .action-btn-danger {
+      background: none;
+      border: 1px solid var(--error);
+      color: var(--error);
+      padding: 4px 8px;
+      border-radius: var(--radius-default);
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .action-btn-danger:hover {
+      background: var(--error-container);
+    }
+
+    /* General News List */
+    .news-list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      border-bottom: 1px solid var(--outline-variant);
+    }
+
+    .news-list-item:last-child {
+      border-bottom: none;
+    }
+
+    /* Status banners */
+    .status-banner {
+      padding: 10px 14px;
+      border-radius: var(--radius-default);
+      margin-bottom: var(--sp-md);
+      font-size: 14px;
+      display: none;
+    }
+
+    .status-banner.success {
+      background: var(--on-tertiary-container);
+      color: var(--tertiary);
+      border: 1px solid var(--tertiary);
+      display: block;
+    }
+
+    .status-banner.error {
+      background: var(--error-container);
+      color: var(--on-error-container);
+      border: 1px solid var(--error);
+      display: block;
+    }
+
+    /* Grid for settings columns */
+    .settings-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-md);
+    }
+
+    @media (max-width: 768px) {
+      .settings-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="admin-header">
+    <div class="header-container">
+      <div class="header-logo">
+        <h1>Goura City Montessori</h1>
+        <span>Admin Control Center</span>
+      </div>
+      <div class="header-nav">
+        <a href="index.html" style="text-decoration:none;color:var(--primary);font-weight:600;font-size:14px;">Visit
+          Website</a>
+        <button id="logout-btn" class="btn-logout">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="admin-container">
+    <!-- Feedback banner -->
+    <div id="status-message" class="status-banner"></div>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs-bar">
+      <button class="tab-btn active" onclick="switchTab('inquiries')">
+        <span class="material-symbols-outlined">inbox</span> Inquiries
+      </button>
+      <button class="tab-btn" onclick="switchTab('news')">
+        <span class="material-symbols-outlined">newspaper</span> News & Notices
+      </button>
+      <button class="tab-btn" onclick="switchTab('settings')">
+        <span class="material-symbols-outlined">settings</span> Site Settings
+      </button>
+    </div>
+
+    <!-- Tab 1: Inquiries -->
+    <section id="tab-inquiries" class="tab-content active">
+      <div class="panel-card">
+        <h2 class="panel-title">Parent Admission Inquiries</h2>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>Parent Name</th>
+                <th>Child Name</th>
+                <th>Admission Grade</th>
+                <th>Phone Number</th>
+                <th>Parent Message</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inquiries-tbody">
+              <tr>
+                <td colspan="7" style="text-align:center;color:var(--on-surface-variant);">Loading inquiries...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 2: News & Notices -->
+    <section id="tab-news" class="tab-content">
+      <div class="settings-grid">
+        <!-- Add News Form -->
+        <div class="panel-card">
+          <h2 class="panel-title">Publish News / Notice</h2>
+          <form id="news-form" style="display:flex;flex-direction:column;gap:var(--sp-md);">
+            <div class="form-group">
+              <label for="news-title">Notice Title</label>
+              <input type="text" id="news-title" placeholder="e.g. Sports Day Meet 2026" required />
+            </div>
+            <div class="settings-grid" style="gap:var(--sp-base);">
+              <div class="form-group">
+                <label for="news-category">Category</label>
+                <select id="news-category" required>
+                  <option value="Event">Event</option>
+                  <option value="Admissions">Admissions</option>
+                  <option value="Announcement">Announcement</option>
+                  <option value="Academic">Academic</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="news-date">Publication Date</label>
+                <input type="text" id="news-date" placeholder="e.g. January 15, 2024" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="news-image">Upload Photo (Optional)</label>
+              <input type="file" id="news-image" accept="image/*" />
+            </div>
+            <div class="form-group">
+              <label for="news-content">Notice Content</label>
+              <textarea id="news-content" rows="5" placeholder="Write the details of the announcement here..."
+                required></textarea>
+            </div>
+            <button type="submit" class="btn-submit" style="margin-top:0;">Publish Notice</button>
+          </form>
+        </div>
+
+        <!-- News Feed List -->
+        <div class="panel-card">
+          <h2 class="panel-title">Current News & Notices Feed</h2>
+          <div id="news-feed-list" style="display:flex;flex-direction:column;max-height:480px;overflow-y:auto;">
+            <p style="text-align:center;color:var(--on-surface-variant);">Loading news feed...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 3: Site Settings -->
+    <section id="tab-settings" class="tab-content">
+      <div class="panel-card" style="max-width:800px;margin:0 auto;">
+        <h2 class="panel-title">Configure Global School Settings</h2>
+        <form id="settings-form" style="display:flex;flex-direction:column;gap:var(--sp-md);">
+          <div class="settings-grid">
+            <div class="form-group">
+              <label for="set-phone">Phone Number</label>
+              <input type="text" id="set-phone" placeholder="+91 94502 62541" required />
+            </div>
+            <div class="form-group">
+              <label for="set-email">Email Address</label>
+              <input type="email" id="set-email" placeholder="gauracitymontessori@gmail.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="set-address">School Campus Address</label>
+            <input type="text" id="set-address" placeholder="Civil Lines, Near Hospital, Hamirpur, UP" required />
+          </div>
+          <div class="form-group">
+            <label for="set-map">Google Maps Location Link</label>
+            <input type="text" id="set-map" placeholder="https://www.google.com/maps/place/..." required />
+          </div>
+          <div class="form-group"
+            style="flex-direction:row;align-items:center;gap:10px;margin-bottom:12px;cursor:pointer;">
+            <input type="checkbox" id="set-announcement-enabled"
+              style="width:18px;height:18px;cursor:pointer;accent-color:var(--primary);" />
+            <label for="set-announcement-enabled" style="margin:0;cursor:pointer;user-select:none;font-weight:600;">Show
+              Top Alert Banner</label>
+          </div>
+          <div class="form-group">
+            <label for="set-announcement">Alert Banner Text (Scrolling ticker marquee)</label>
+            <textarea id="set-announcement" rows="3" placeholder="Enter important announcement..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit"
+            style="margin-top:0;align-self:flex-start;padding-left:var(--sp-md);padding-right:var(--sp-md);">Save
+            Configuration</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Tab switching logic
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+      const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(btn => btn.textContent.toLowerCase().includes(tabId));
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const targetContent = document.getElementById('tab-' + tabId);
+      if (targetContent) targetContent.classList.add('active');
+
+      // Load specific tab data
+      if (tabId === 'inquiries') loadInquiries();
+      if (tabId === 'news') loadNewsFeed();
+      if (tabId === 'settings') loadSettings();
+    }
+
+    // Status notifications helper
+    function showStatus(text, isError = false) {
+      const banner = document.getElementById('status-message');
+      banner.className = 'status-banner ' + (isError ? 'error' : 'success');
+      banner.textContent = text;
+      window.scrollTo(0, 0);
+      setTimeout(() => {
+        banner.style.display = 'none';
+      }, 5000);
+    }
+
+    // Log out action
+    document.getElementById('logout-btn').addEventListener('click', async () => {
+      try {
+        const res = await fetch('/api/logout', { method: 'POST' });
+        if (res.ok) window.location.href = '/login.html';
+      } catch (err) {
+        showStatus('Log out failed.', true);
+      }
+    });
+
+    // 1. Manage Inquiries
+    async function loadInquiries() {
+      const tbody = document.getElementById('inquiries-tbody');
+      try {
+        const res = await fetch('/api/inquiries');
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+
+        if (data.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--on-surface-variant);">No inquiries received yet.</td></tr>`;
+          return;
+        }
+
+        tbody.innerHTML = data.map(item => `
+          <tr>
+            <td><strong>${escapeHtml(item.parentName)}</strong></td>
+            <td>${escapeHtml(item.childName)}</td>
+            <td><span class="chip" style="background:var(--tertiary-fixed);color:var(--on-tertiary-fixed);padding:2px 8px;font-size:12px;border-radius:10px;">${escapeHtml(item.gradeLevel)}</span></td>
+            <td><a href="tel:${item.phoneNumber.replace(/\s+/g, '')}" style="color:var(--primary);text-decoration:none;">${escapeHtml(item.phoneNumber)}</a></td>
+            <td>${escapeHtml(item.message || '—')}</td>
+            <td style="font-size:12px;color:var(--on-surface-variant);white-space:nowrap;">${new Date(item.createdAt).toLocaleString()}</td>
+            <td><button class="action-btn-danger" onclick="deleteInquiry('${item._id}')">Delete</button></td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:var(--error);">Failed to load inquiries.</td></tr>`;
+      }
+    }
+
+    async function deleteInquiry(id) {
+      if (!confirm('Are you sure you want to delete this admission inquiry?')) return;
+      try {
+        const res = await fetch(`/api/inquiries/${id}`, { method: 'DELETE' });
+        if (res.ok) {
+          showStatus('Inquiry deleted successfully.');
+          loadInquiries();
+        } else {
+          showStatus('Failed to delete inquiry.', true);
+        }
+      } catch (err) {
+        showStatus('Network error during deletion.', true);
+      }
+    }
+
+    // 2. Manage News & Notices
+    async function loadNewsFeed() {
+      const listDiv = document.getElementById('news-feed-list');
+      try {
+        const res = await fetch('/api/news');
+        if (!res.ok) throw new Error();
+        const data = await res.json();
+
+        if (data.length === 0) {
+          listDiv.innerHTML = `<p style="text-align:center;color:var(--on-surface-variant);padding:var(--sp-md);">No notices published yet.</p>`;
+          return;
+        }
+
+        listDiv.innerHTML = data.map(item => `
+          <div class="news-list-item">
+            <div>
+              <span class="caption" style="color:var(--primary);font-size:12px;">${escapeHtml(item.date)} • ${escapeHtml(item.category)}</span>
+              <h4 style="margin:4px 0 0 0;font-size:16px;">${escapeHtml(item.title)}</h4>
+            </div>
+            <button class="action-btn-danger" onclick="deleteNews('${item._id}')">Delete</button>
+          </div>
+        `).join('');
+      } catch (err) {
+        listDiv.innerHTML = `<p style="text-align:center;color:var(--error);padding:var(--sp-md);">Failed to load news feed.</p>`;
+      }
+    }
+
+    // Default the date value in News Form to current date representation
+    function defaultNewsDate() {
+      const options = { year: 'numeric', month: 'long', day: '2-digit' };
+      document.getElementById('news-date').value = new Date().toLocaleDateString('en-US', options);
+    }
+
+    document.getElementById('news-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const title = document.getElementById('news-title').value;
+      const category = document.getElementById('news-category').value;
+      const date = document.getElementById('news-date').value;
+      const content = document.getElementById('news-content').value;
+      const imageFile = document.getElementById('news-image').files[0];
+
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('category', category);
+      formData.append('date', date);
+      formData.append('content', content);
+      if (imageFile) {
+        formData.append('newsImage', imageFile);
+      }
+
+      try {
+        const res = await fetch('/api/news', {
+          method: 'POST',
+          body: formData
+        });
+        if (res.ok) {
+          showStatus('Notice published successfully.');
+          document.getElementById('news-form').reset();
+          defaultNewsDate();
+          loadNewsFeed();
+        } else {
+          showStatus('Failed to publish notice.', true);
+        }
+      } catch (err) {
+        showStatus('Network error occurred while publishing.', true);
+      }
+    });
+
+    async function deleteNews(id) {
+      if (!confirm('Are you sure you want to delete this notice?')) return;
+      try {
+        const res = await fetch(`/api/news/${id}`, { method: 'DELETE' });
+        if (res.ok) {
+          showStatus('Notice deleted successfully.');
+          loadNewsFeed();
+        } else {
+          showStatus('Failed to delete notice.', true);
+        }
+      } catch (err) {
+        showStatus('Network error during deletion.', true);
+      }
+    }
+
+    // 3. Manage Settings
+    async function loadSettings() {
+      try {
+        const res = await fetch('/api/settings');
+        if (!res.ok) throw new Error();
+        const settings = await res.json();
+
+        document.getElementById('set-phone').value = settings.phone || '';
+        document.getElementById('set-email').value = settings.email || '';
+        document.getElementById('set-address').value = settings.address || '';
+        document.getElementById('set-map').value = settings.map_link || '';
+        document.getElementById('set-announcement').value = settings.announcement || '';
+        document.getElementById('set-announcement-enabled').checked = (settings.announcement_enabled !== 'false' && settings.announcement_enabled !== false);
+      } catch (err) {
+        showStatus('Failed to load current configuration settings.', true);
+      }
+    }
+
+    document.getElementById('settings-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const phone = document.getElementById('set-phone').value;
+      const email = document.getElementById('set-email').value;
+      const address = document.getElementById('set-address').value;
+      const map_link = document.getElementById('set-map').value;
+      const announcement = document.getElementById('set-announcement').value;
+      const announcement_enabled = document.getElementById('set-announcement-enabled').checked ? 'true' : 'false';
+
+      try {
+        const res = await fetch('/api/settings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone, email, address, map_link, announcement, announcement_enabled })
+        });
+        if (res.ok) {
+          showStatus('School configurations updated successfully.');
+        } else {
+          showStatus('Failed to update school configurations.', true);
+        }
+      } catch (err) {
+        showStatus('Network error occurred during update.', true);
+      }
+    });
+
+    // Helper: Escape HTML
+    function escapeHtml(unsafe) {
+      if (!unsafe) return '';
+      return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', () => {
+      loadInquiries();
+      defaultNewsDate();
+    });
+  </script>
+</body>
+
+</html>

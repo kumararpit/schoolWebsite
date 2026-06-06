@@ -1,0 +1,7 @@
+node_modules/
+.env
+school.db
+school.db-journal
+school.db-shm
+school.db-wal
+simulated_emails.log

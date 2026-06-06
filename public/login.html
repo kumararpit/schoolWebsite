@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login | Goura City Montessori</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <style>
+    body {
+      background: var(--surface-container-low);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: var(--sp-md);
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      border: 1px solid var(--outline-variant);
+      box-shadow: var(--sun-baked-shadow);
+      padding: var(--sp-lg) var(--sp-md);
+      border-radius: var(--radius-lg);
+    }
+
+    .logo-header {
+      text-align: center;
+      margin-bottom: var(--sp-md);
+    }
+
+    .logo-header h1 {
+      font-family: 'Literata', serif;
+      color: var(--primary);
+      font-size: 24px;
+      margin-bottom: var(--sp-xs);
+    }
+
+    .logo-header p {
+      color: var(--on-surface-variant);
+      font-size: 14px;
+    }
+
+    .error-msg {
+      background: var(--error-container);
+      color: var(--on-error-container);
+      border: 1px solid var(--error);
+      padding: var(--sp-base) var(--sp-sm);
+      font-size: 14px;
+      border-radius: var(--radius-default);
+      margin-bottom: var(--sp-md);
+      display: none;
+    }
+
+    .success-msg {
+      background: var(--on-tertiary-container);
+      color: var(--tertiary);
+      border: 1px solid var(--tertiary);
+      padding: var(--sp-base) var(--sp-sm);
+      font-size: 14px;
+      border-radius: var(--radius-default);
+      margin-bottom: var(--sp-md);
+      display: none;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: var(--radius-default);
+      cursor: pointer;
+      transition: background-color 0.2s;
+      margin-top: var(--sp-sm);
+    }
+
+    .btn-submit:hover {
+      background: var(--primary-container);
+    }
+
+    .back-home {
+      margin-top: var(--sp-md);
+      text-align: center;
+    }
+
+    .back-home a {
+      color: var(--tertiary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .back-home a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-card">
+    <div class="logo-header">
+      <h1>Goura City Montessori</h1>
+      <p>Administration Access Portal</p>
+    </div>
+
+    <div id="error-alert" class="error-msg"></div>
+    <div id="success-alert" class="success-msg"></div>
+
+    <!-- View 1: Standard Sign In Form -->
+    <form id="login-form" style="display:flex;flex-direction:column;gap:var(--sp-md);">
+      <div class="form-group">
+        <label for="username">Username (Email)</label>
+        <input type="email" id="username" placeholder="e.g. arpitkumar1101@gmail.com" required />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter password" required />
+        <div style="text-align: right; margin-top: 6px;">
+          <a href="#" id="forgot-password-link" style="font-size: 13px; color: var(--primary); text-decoration: none; font-weight: 600;">Forgot Password?</a>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit">Sign In</button>
+    </form>
+
+    <!-- View 2: Forgot Password - Verify OTP & Reset Form -->
+    <form id="forgot-reset-form" style="display:none;flex-direction:column;gap:var(--sp-md);">
+      <div id="forgot-instructions" style="margin-bottom: var(--sp-xs); color: var(--on-surface-variant); font-size: 14px; line-height: 1.5;">
+        A security verification code has been dispatched to your email. Please input the code along with your new administrator password.
+      </div>
+      <div class="form-group">
+        <label for="reset-otp">6-Digit Verification Code</label>
+        <input type="text" id="reset-otp" placeholder="Enter OTP (6 digits)" maxlength="6" pattern="[0-9]{6}" required style="letter-spacing: 2px; text-align: center; font-weight: 700; font-size: 18px;" />
+      </div>
+      <div class="form-group">
+        <label for="reset-new-password">New Password</label>
+        <input type="password" id="reset-new-password" placeholder="Enter new password" required />
+      </div>
+      <div class="form-group">
+        <label for="reset-confirm-password">Confirm New Password</label>
+        <input type="password" id="reset-confirm-password" placeholder="Confirm new password" required />
+      </div>
+      <button type="submit" class="btn-submit">Reset Password</button>
+      <div style="text-align: center; margin-top: var(--sp-sm);">
+        <a href="#" class="back-to-login" style="font-size: 14px; color: var(--tertiary); text-decoration: none; font-weight: 600;">Back to Sign In</a>
+      </div>
+    </form>
+
+    <div class="back-home">
+      <a href="index.html">
+        <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+        Return to Home Page
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const loginForm = document.getElementById('login-form');
+    const forgotResetForm = document.getElementById('forgot-reset-form');
+    const forgotInstructions = document.getElementById('forgot-instructions');
+    
+    const errorAlert = document.getElementById('error-alert');
+    const successAlert = document.getElementById('success-alert');
+
+    function showAlerts(errorMsg = '', successMsg = '') {
+      if (errorMsg) {
+        errorAlert.textContent = errorMsg;
+        errorAlert.style.display = 'block';
+      } else {
+        errorAlert.style.display = 'none';
+      }
+
+      if (successMsg) {
+        successAlert.textContent = successMsg;
+        successAlert.style.display = 'block';
+      } else {
+        successAlert.style.display = 'none';
+      }
+    }
+
+    // View Transitions
+    document.getElementById('forgot-password-link').addEventListener('click', async (e) => {
+      e.preventDefault();
+      showAlerts();
+      
+      // Trigger OTP generation and email dispatch automatically
+      try {
+        loginForm.style.display = 'none';
+        forgotResetForm.style.display = 'flex';
+        forgotInstructions.textContent = 'Requesting security verification code...';
+        
+        const res = await fetch('/api/forgot-password/request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({}) // defaults to arpitkumar1101@gmail.com on backend
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          forgotInstructions.innerHTML = `A security verification code has been dispatched to <strong>arp...1@gmail.com</strong>. Please check your inbox and retrieve it.`;
+          showAlerts('', data.message);
+        } else {
+          loginForm.style.display = 'flex';
+          forgotResetForm.style.display = 'none';
+          showAlerts(data.error || 'Failed to request password reset code.');
+        }
+      } catch (err) {
+        loginForm.style.display = 'flex';
+        forgotResetForm.style.display = 'none';
+        showAlerts('A network error occurred. Please try again.');
+      }
+    });
+
+    document.querySelectorAll('.back-to-login').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        showAlerts();
+        forgotResetForm.style.display = 'none';
+        loginForm.style.display = 'flex';
+      });
+    });
+
+    // 1. Submit Sign In Form
+    loginForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      showAlerts();
+
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          window.location.href = '/admin.html';
+        } else {
+          showAlerts(data.error || 'Invalid email or password.');
+        }
+      } catch (err) {
+        showAlerts('A network error occurred. Please try again.');
+      }
+    });
+
+    // 2. Submit Reset Password Form
+    forgotResetForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      showAlerts();
+
+      const otp = document.getElementById('reset-otp').value;
+      const newPassword = document.getElementById('reset-new-password').value;
+      const confirmPassword = document.getElementById('reset-confirm-password').value;
+
+      if (newPassword !== confirmPassword) {
+        showAlerts('Passwords do not match.');
+        return;
+      }
+
+      try {
+        const res = await fetch('/api/forgot-password/verify-reset', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ otp, newPassword }) // defaults to arpitkumar1101@gmail.com on server
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          forgotResetForm.style.display = 'none';
+          loginForm.style.display = 'flex';
+          showAlerts('', data.message);
+          document.getElementById('password').value = '';
+          document.getElementById('reset-otp').value = '';
+          document.getElementById('reset-new-password').value = '';
+          document.getElementById('reset-confirm-password').value = '';
+        } else {
+          showAlerts(data.error || 'Failed to reset password.');
+        }
+      } catch (err) {
+        showAlerts('A network error occurred. Please try again.');
+      }
+    });
+  </script>
+</body>
+
+</html>
