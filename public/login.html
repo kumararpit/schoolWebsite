@@ -8,8 +8,11 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200..900;1,7..72,200..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   <style>
     body {
       background: var(--surface-container-low);
@@ -123,15 +126,17 @@
     <!-- View 1: Standard Sign In Form -->
     <form id="login-form" style="display:flex;flex-direction:column;gap:var(--sp-md);">
       <div class="form-group">
-        <label for="username">Username (Email)</label>
-        <input type="email" id="username" placeholder="e.g. arpitkumar1101@gmail.com" required />
+        <label for="username">Username</label>
+        <input type="email" id="username" placeholder="Enter Username" required />
       </div>
 
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" id="password" placeholder="Enter password" required />
         <div style="text-align: right; margin-top: 6px;">
-          <a href="#" id="forgot-password-link" style="font-size: 13px; color: var(--primary); text-decoration: none; font-weight: 600;">Forgot Password?</a>
+          <a href="#" id="forgot-password-link"
+            style="font-size: 13px; color: var(--primary); text-decoration: none; font-weight: 600;">Forgot
+            Password?</a>
         </div>
       </div>
 
@@ -140,12 +145,15 @@
 
     <!-- View 2: Forgot Password - Verify OTP & Reset Form -->
     <form id="forgot-reset-form" style="display:none;flex-direction:column;gap:var(--sp-md);">
-      <div id="forgot-instructions" style="margin-bottom: var(--sp-xs); color: var(--on-surface-variant); font-size: 14px; line-height: 1.5;">
-        A security verification code has been dispatched to your email. Please input the code along with your new administrator password.
+      <div id="forgot-instructions"
+        style="margin-bottom: var(--sp-xs); color: var(--on-surface-variant); font-size: 14px; line-height: 1.5;">
+        A security verification code has been dispatched to your email. Please input the code along with your new
+        administrator password.
       </div>
       <div class="form-group">
         <label for="reset-otp">6-Digit Verification Code</label>
-        <input type="text" id="reset-otp" placeholder="Enter OTP (6 digits)" maxlength="6" pattern="[0-9]{6}" required style="letter-spacing: 2px; text-align: center; font-weight: 700; font-size: 18px;" />
+        <input type="text" id="reset-otp" placeholder="Enter OTP (6 digits)" maxlength="6" pattern="[0-9]{6}" required
+          style="letter-spacing: 2px; text-align: center; font-weight: 700; font-size: 18px;" />
       </div>
       <div class="form-group">
         <label for="reset-new-password">New Password</label>
@@ -157,7 +165,8 @@
       </div>
       <button type="submit" class="btn-submit">Reset Password</button>
       <div style="text-align: center; margin-top: var(--sp-sm);">
-        <a href="#" class="back-to-login" style="font-size: 14px; color: var(--tertiary); text-decoration: none; font-weight: 600;">Back to Sign In</a>
+        <a href="#" class="back-to-login"
+          style="font-size: 14px; color: var(--tertiary); text-decoration: none; font-weight: 600;">Back to Sign In</a>
       </div>
     </form>
 
@@ -173,7 +182,7 @@
     const loginForm = document.getElementById('login-form');
     const forgotResetForm = document.getElementById('forgot-reset-form');
     const forgotInstructions = document.getElementById('forgot-instructions');
-    
+
     const errorAlert = document.getElementById('error-alert');
     const successAlert = document.getElementById('success-alert');
 
@@ -197,13 +206,13 @@
     document.getElementById('forgot-password-link').addEventListener('click', async (e) => {
       e.preventDefault();
       showAlerts();
-      
+
       // Trigger OTP generation and email dispatch automatically
       try {
         loginForm.style.display = 'none';
         forgotResetForm.style.display = 'flex';
         forgotInstructions.textContent = 'Requesting security verification code...';
-        
+
         const res = await fetch('/api/forgot-password/request', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -212,7 +221,7 @@
         const data = await res.json();
 
         if (res.ok && data.success) {
-          forgotInstructions.innerHTML = `A security verification code has been dispatched to <strong>arp...1@gmail.com</strong>. Please check your inbox and retrieve it.`;
+          forgotInstructions.innerHTML = `A security verification code has been dispatched to <strong>gau******i@gmail.com</strong>. Please check your inbox and retrieve it.`;
           showAlerts('', data.message);
         } else {
           loginForm.style.display = 'flex';
@@ -236,7 +245,7 @@
     });
 
     // 1. Submit Sign In Form
-    loginForm.addEventListener('submit', async function(e) {
+    loginForm.addEventListener('submit', async function (e) {
       e.preventDefault();
       showAlerts();
 
@@ -262,7 +271,7 @@
     });
 
     // 2. Submit Reset Password Form
-    forgotResetForm.addEventListener('submit', async function(e) {
+    forgotResetForm.addEventListener('submit', async function (e) {
       e.preventDefault();
       showAlerts();
 
