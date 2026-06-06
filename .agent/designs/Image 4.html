@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us | Goura City Montessori School</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Literata:ital,wght@0,400;0,600;0,700;1,400&amp;family=Open+Sans:wght@400;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#745200",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#f3f0ea",
+                        "surface-container-low": "#f6f3ec",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#89726d",
+                        "outline-variant": "#dcc0bb",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#e5fadc",
+                        "secondary-fixed-dim": "#f4be55",
+                        "on-surface-variant": "#56423e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-container": "#fff1ee",
+                        "on-surface": "#1c1c18",
+                        "tertiary-container": "#62745c",
+                        "tertiary-fixed-dim": "#b8ccb0",
+                        "surface-container": "#f0eee7",
+                        "inverse-primary": "#ffb4a4",
+                        "surface-variant": "#e5e2db",
+                        "primary-fixed-dim": "#ffb4a4",
+                        "primary-container": "#b3523e",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#9d422f",
+                        "secondary-fixed": "#ffdea7",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#ffdad3",
+                        "on-tertiary-fixed": "#0f1f0d",
+                        "secondary-container": "#fdc65c",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#3a4b36",
+                        "on-background": "#1c1c18",
+                        "tertiary-fixed": "#d4e8cb",
+                        "secondary": "#7c5800",
+                        "background": "#fcf9f2",
+                        "surface-dim": "#dcdad3",
+                        "surface-container-highest": "#e5e2db",
+                        "surface-bright": "#fcf9f2",
+                        "inverse-surface": "#31312c",
+                        "tertiary": "#4a5b45",
+                        "on-primary-fixed": "#3e0500",
+                        "primary": "#943b29",
+                        "surface-container-high": "#ebe8e1",
+                        "surface": "#fcf9f2",
+                        "on-secondary-fixed-variant": "#5e4200",
+                        "on-primary-fixed-variant": "#7e2b1a",
+                        "on-secondary-fixed": "#271900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "md": "24px",
+                        "base": "8px",
+                        "lg": "48px",
+                        "container-max": "1120px",
+                        "sm": "12px",
+                        "xl": "80px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Open Sans"],
+                        "label-md": ["Open Sans"],
+                        "body-lg": ["Open Sans"],
+                        "headline-xl": ["Literata"],
+                        "headline-lg-mobile": ["Literata"],
+                        "headline-lg": ["Literata"],
+                        "headline-md": ["Literata"],
+                        "caption": ["Open Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "caption": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+
+        .sun-baked-shadow {
+            box-shadow: 0 4px 20px -2px rgba(45, 41, 38, 0.08);
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface selection:bg-primary-fixed selection:text-on-primary-fixed">
+    <!-- TopNavBar -->
+    <header class="w-full top-0 bg-background border-b border-outline-variant z-50 sticky">
+        <nav class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
+            <div class="flex items-center gap-2">
+                <span class="font-headline-md text-headline-md font-bold text-primary">Goura City Montessori</span>
+            </div>
+            <div class="hidden md:flex items-center gap-8">
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md"
+                    href="#">Home</a>
+                <a class="text-primary border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">About</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md"
+                    href="#">Academics</a>
+                <a class="text-on-surface-variant hover:text-primary transition-colors font-body-md text-body-md"
+                    href="#">Contact</a>
+            </div>
+            <button
+                class="bg-primary text-on-primary px-6 py-2 rounded-lg font-label-md text-label-md hover:bg-primary-container transition-all scale-95 duration-150 ease-in-out active:scale-90">
+                Admissions
+            </button>
+        </nav>
+    </header>
+    <main>
+        <!-- Hero Section -->
+        <section class="relative py-xl overflow-hidden bg-surface-container-low">
+            <div class="max-w-container-max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 items-center gap-xl">
+                <div>
+                    <h1 class="font-headline-xl text-headline-xl text-primary mb-md">Nurturing Minds, Grounded in
+                        Heritage</h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-lg max-w-lg">
+                        From Playground to Class 8, Goura City Montessori in Hamirpur provides a sunlit environment
+                        where traditional values meet the freedom of the Montessori method.
+                    </p>
+                    <div class="flex gap-md">
+                        <div class="flex items-center gap-2 text-tertiary">
+                            <span class="material-symbols-outlined">verified</span>
+                            <span class="font-label-md text-label-md">Certified Montessori</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-tertiary">
+                            <span class="material-symbols-outlined">location_on</span>
+                            <span class="font-label-md text-label-md">Hamirpur, HP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div
+                        class="rounded-xl overflow-hidden border border-outline-variant sun-baked-shadow rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <img alt="School environment" class="w-full aspect-video object-cover"
+                            data-alt="A warm, sunlit Montessori classroom in a traditional brick building, featuring low wooden shelves filled with tactile learning materials and organic fiber rugs. The atmosphere is peaceful and scholarly, with soft morning light streaming through large windows, highlighting a palette of terracotta, cream, and sage green. The photograph captures the grounded, high-touch heritage of an educational sanctuary."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz3ZWGqm2zpp4t5A2tTgsZ1IWFDDIyQW96VGHG05hu7zfpUx3UQtcG8xhqscVXFNCWfm7PfJoYgr4sibwBw4mJU2355mbQ7RlsegA1UUMsvt363pPAIiTaxnzNCpQV1VtD4qCxOJOsE3x-xBDQdsMFD5G3l5kCwEZ0aXpLBnZwrPi4if9KN5U5Z89_cGQo8L01xv3sof_CqlXaoCoF1aPI4_DfOdBfi_ZWa0EIlCEoKXSnomTnhScrYzvsq6mHj5YNSBKPf89Gl4kB" />
+                    </div>
+                    <div
+                        class="absolute -bottom-6 -left-6 bg-secondary-container p-md rounded-lg border border-outline-variant sun-baked-shadow hidden md:block">
+                        <p class="font-headline-md text-headline-md text-on-secondary-container">Est. 2004</p>
+                        <p class="font-caption text-caption text-on-secondary-container">Two Decades of Excellence</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Our History - Asymmetric Timeline -->
+        <section class="py-xl max-w-container-max mx-auto px-gutter">
+            <div class="text-center mb-xl">
+                <span class="font-label-md text-label-md text-secondary uppercase tracking-widest">Our Journey</span>
+                <h2 class="font-headline-lg text-headline-lg text-on-surface mt-base">The Story of Maa Gaura</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+                <div class="p-md bg-surface border border-outline-variant rounded-lg relative overflow-hidden">
+                    <div class="text-primary-container font-headline-xl opacity-20 absolute -top-4 -left-2 italic">2004
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-primary relative mb-base">The Seed is Sown</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Founded with just 12 students in a
+                        rented villa, the vision was simple: to bring authentic Montessori education to the heart of
+                        Hamirpur, focusing on the child's innate desire to learn.</p>
+                </div>
+                <div
+                    class="p-md bg-surface border border-outline-variant rounded-lg relative overflow-hidden md:translate-y-base">
+                    <div class="text-primary-container font-headline-xl opacity-20 absolute -top-4 -left-2 italic">2012
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-primary relative mb-base">Growing Roots</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">As the community's trust grew, we moved
+                        to our permanent campus. We expanded our curriculum up to Class 5, integrating local cultural
+                        heritage with global pedagogical standards.</p>
+                </div>
+                <div
+                    class="p-md bg-surface border border-outline-variant rounded-lg relative overflow-hidden md:translate-y-lg">
+                    <div class="text-primary-container font-headline-xl opacity-20 absolute -top-4 -left-2 italic">2024
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-primary relative mb-base">The Modern Legacy</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Now serving students up to Class 8,
+                        Goura City Montessori stands as a beacon of grounded, holistic education, known for producing
+                        self-reliant and compassionate citizens.</p>
+                </div>
+            </div>
+        </section>
+        <!-- Our Philosophy - Bento Grid -->
+        <section class="py-xl bg-surface-container">
+            <div class="max-w-container-max mx-auto px-gutter">
+                <div class="mb-xl flex flex-col md:flex-row md:items-end justify-between gap-md">
+                    <div class="max-w-2xl">
+                        <span class="font-label-md text-label-md text-secondary uppercase tracking-widest">Core
+                            Values</span>
+                        <h2 class="font-headline-lg text-headline-lg text-on-surface mt-base">A Philosophy of Freedom
+                            &amp; Order</h2>
+                    </div>
+                    <div class="hidden md:block">
+                        <span class="material-symbols-outlined text-outline text-6xl">spa</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+                    <!-- Hands-on Learning -->
+                    <div
+                        class="md:col-span-8 bg-background border border-outline-variant p-lg rounded-xl flex flex-col justify-between overflow-hidden relative group">
+                        <div class="relative z-10">
+                            <h3 class="font-headline-md text-headline-md text-primary mb-base">Hands-on Knowledge</h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant max-w-md">We believe that the
+                                hand is the instrument of the mind. Our classrooms are equipped with specialized
+                                materials designed to be touched, manipulated, and understood through sensory
+                                experience.</p>
+                        </div>
+                        <img alt="Learning material"
+                            class="absolute right-0 bottom-0 w-1/2 h-full object-cover opacity-10 group-hover:opacity-20 transition-opacity"
+                            data-alt="A close-up of small children's hands working with traditional wooden Montessori arithmetic beads and geometric shapes. The scene is softly lit with warm, golden-hour sunlight filtering through a window. The style is highly detailed and tactile, focusing on the organic wood textures and the quiet concentration of the environment in a classic school setting."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiQj8pqhSLYDyd_pY2iHXJDMtOBg5MUTuwnHzkvus1sapx98jQbmvndLdGuwlDTTG3nh50p5eaAuurGo6D6IIOxLE6acitt0OufUztGyCG8nwqfGw0Ikf2UDaRXCwmuypGOlMAbE-sEpeNXomhtlk3FtHpRpa3DTf_OSjz59eV-TQU5_J8RXRI_-ngWHn288sNe_jxLews4SE1yEMCIuDEPLSFIc3xt4Xjrxrz0gas-Ti7q7chYut2yzeuEIAEKd-B04nwJKxsJlN3" />
+                    </div>
+                    <!-- Community Rooted -->
+                    <div
+                        class="md:col-span-4 bg-tertiary-container text-on-tertiary-container p-lg rounded-xl flex flex-col justify-center">
+                        <span class="material-symbols-outlined mb-md text-4xl">diversity_3</span>
+                        <h3 class="font-headline-md text-headline-md mb-base">Community Rooted</h3>
+                        <p class="font-body-md text-body-md opacity-90">Learning doesn't happen in isolation. We foster
+                            a sense of belonging to the local Hamirpur culture while encouraging global curiosity.</p>
+                    </div>
+                    <!-- Respect for the Child -->
+                    <div class="md:col-span-4 bg-secondary-container text-on-secondary-container p-lg rounded-xl">
+                        <h3 class="font-headline-md text-headline-md mb-base">Respect</h3>
+                        <p class="font-body-md text-body-md opacity-90">Every student is treated as an individual with
+                            their own rhythm, interests, and innate dignity.</p>
+                    </div>
+                    <!-- Prepared Environment -->
+                    <div
+                        class="md:col-span-8 bg-background border border-outline-variant p-lg rounded-xl flex items-center gap-md">
+                        <div
+                            class="w-24 h-24 rounded-full bg-surface-variant flex-shrink-0 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary text-4xl">home_work</span>
+                        </div>
+                        <div>
+                            <h3 class="font-headline-md text-headline-md text-primary mb-base">The Prepared Environment
+                            </h3>
+                            <p class="font-body-md text-body-md text-on-surface-variant">Our classrooms are
+                                architecturally designed to facilitate independence, with everything at the child's
+                                level.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Meet our Principal -->
+        <section class="py-xl max-w-container-max mx-auto px-gutter">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+                <div class="order-2 md:order-1">
+                    <span class="font-label-md text-label-md text-secondary uppercase tracking-widest">Leadership</span>
+                    <h2 class="font-headline-lg text-headline-lg text-on-surface mt-base mb-md">A Message from our
+                        Principal</h2>
+                    <div
+                        class="space-y-md font-body-lg text-body-lg text-on-surface-variant italic border-l-4 border-primary pl-md">
+                        <p>"Education is not what the teacher gives; education is a natural process spontaneously
+                            carried out by the human individual, and is acquired not by listening to words but by
+                            experiences upon the environment."</p>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mt-md">
+                        At Goura City Montessori, we don't just teach subjects; we nurture the spirit. Our commitment to
+                        the Montessori method ensures that your child grows into a confident, independent thinker who is
+                        deeply connected to their roots here in Hamirpur. We invite you to be a part of this beautiful
+                        journey of discovery.
+                    </p>
+                    <div class="mt-lg">
+                        <p class="font-headline-md text-headline-md text-primary">Mrs. Sarita Sharma</p>
+                        <p class="font-label-md text-label-md text-on-surface-variant">Founder &amp; Principal, M.Ed
+                            (Montessori Specialist)</p>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 flex justify-center">
+                    <div
+                        class="relative w-full max-w-md aspect-[4/5] bg-surface-variant rounded-xl overflow-hidden border border-outline-variant sun-baked-shadow">
+                        <img alt="Principal Sarita Sharma"
+                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                            data-alt="A dignified middle-aged woman with a warm, welcoming smile, wearing a traditional Indian saree in muted earth tones. She is seated in a sunlit, scholarly office with wooden bookshelves filled with leather-bound books in the background. The lighting is soft and professional, evoking a sense of wisdom, authority, and maternal warmth. The aesthetic is grounded and traditional."
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyj7PboPopRGXdoPuyR9OlzQ17BWSDc3EqXm3_MvzvdJFeAAKZVBaxGC0-iuFbPPoCL5eSuUe_5yRPuxosQzXxtMCqKHpAJRWfDClLN_ktyc9K9QllERDZ56uINtUoZBEroskaVSomZoR6-7ej4u2IsamOdrCc_0SsUtZiZjvqScs6uN_aBhNjjLkUqf6d-ZuXivCldO0wxS93nkeDZHL5ba6Fiv2ZgPPlfY4ZTg-S0mqMtJ99-UVavBuZuhPfawbvWJtcCB0LdF8o" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CTA Section -->
+        <section class="py-xl bg-primary text-on-primary">
+            <div class="max-w-container-max mx-auto px-gutter text-center">
+                <h2 class="font-headline-xl text-headline-xl mb-md">Join Our Learning Community</h2>
+                <p class="font-body-lg text-body-lg opacity-90 mb-lg max-w-2xl mx-auto">
+                    Admissions are now open for the upcoming academic year. Experience the Montessori difference for
+                    your child.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-md">
+                    <button
+                        class="bg-secondary-container text-on-secondary-container px-xl py-base rounded-lg font-label-md text-label-md hover:bg-secondary-fixed transition-colors">Apply
+                        Now</button>
+                    <button
+                        class="border border-on-primary text-on-primary px-xl py-base rounded-lg font-label-md text-label-md hover:bg-white/10 transition-colors">Book
+                        a Campus Tour</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full bg-surface-container-low border-t border-outline-variant">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-md py-xl px-gutter max-w-container-max mx-auto items-start">
+            <div class="flex flex-col gap-base">
+                <span class="font-headline-md text-headline-md text-primary">Goura City Montessori</span>
+                <p class="font-body-md text-body-md text-on-surface-variant">Providing a grounded, high-touch
+                    educational experience in Hamirpur since 2004.</p>
+                <div class="flex gap-md mt-md">
+                    <span
+                        class="material-symbols-outlined text-primary cursor-pointer hover:opacity-100 opacity-80">face_nod</span>
+                    <span
+                        class="material-symbols-outlined text-primary cursor-pointer hover:opacity-100 opacity-80">camera_alt</span>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-md">
+                <div class="flex flex-col gap-base">
+                    <h4 class="font-label-md text-label-md text-on-surface font-bold">Quick Links</h4>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary transition-all"
+                        href="#">Academics</a>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary transition-all"
+                        href="#">Admissions</a>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary transition-all"
+                        href="#">Careers</a>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary transition-all"
+                        href="#">Gallery</a>
+                </div>
+                <div class="flex flex-col gap-base">
+                    <h4 class="font-label-md text-label-md text-on-surface font-bold">Resources</h4>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary transition-all"
+                        href="#">Privacy Policy</a>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary transition-all"
+                        href="#">Terms of Service</a>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary transition-all"
+                        href="#">Location</a>
+                    <a class="font-body-md text-body-md text-on-surface-variant hover:underline decoration-primary transition-all"
+                        href="#">Sitemap</a>
+                </div>
+            </div>
+            <div class="flex flex-col gap-base">
+                <h4 class="font-label-md text-label-md text-on-surface font-bold">Visit Us</h4>
+                <p class="font-body-md text-body-md text-on-surface-variant">Ward No. 4, Krishna Nagar,<br />Hamirpur,
+                    Himachal Pradesh 177001</p>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-base">Phone: +91 98XXX XXXXX<br />Email:
+                    info@maagauramontessori.edu</p>
+            </div>
+        </div>
+        <div class="max-w-container-max mx-auto px-gutter py-md border-t border-outline-variant text-center">
+            <p class="font-label-md text-label-md text-on-surface-variant">© 2024 Goura City Montessori School,
+                Hamirpur. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Simple micro-interactions for hover effects on cards
+        document.querySelectorAll('.group').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.classList.add('sun-baked-shadow');
+            });
+            el.addEventListener('mouseleave', () => {
+                el.classList.remove('sun-baked-shadow');
+            });
+        });
+    </script>
+</body>
+
+</html>

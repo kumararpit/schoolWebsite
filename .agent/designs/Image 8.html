@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Academics | Goura City Montessori</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;600;700&amp;family=Open+Sans:wght@400;600&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <!-- Tailwind Configuration -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#745200",
+            "error": "#ba1a1a",
+            "inverse-on-surface": "#f3f0ea",
+            "surface-container-low": "#f6f3ec",
+            "on-secondary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "outline": "#89726d",
+            "outline-variant": "#dcc0bb",
+            "error-container": "#ffdad6",
+            "on-tertiary-container": "#e5fadc",
+            "secondary-fixed-dim": "#f4be55",
+            "on-surface-variant": "#56423e",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-container": "#fff1ee",
+            "on-surface": "#1c1c18",
+            "tertiary-container": "#62745c",
+            "tertiary-fixed-dim": "#b8ccb0",
+            "surface-container": "#f0eee7",
+            "inverse-primary": "#ffb4a4",
+            "surface-variant": "#e5e2db",
+            "primary-fixed-dim": "#ffb4a4",
+            "primary-container": "#b3523e",
+            "on-error-container": "#93000a",
+            "surface-tint": "#9d422f",
+            "secondary-fixed": "#ffdea7",
+            "on-error": "#ffffff",
+            "primary-fixed": "#ffdad3",
+            "on-tertiary-fixed": "#0f1f0d",
+            "secondary-container": "#fdc65c",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed-variant": "#3a4b36",
+            "on-background": "#1c1c18",
+            "tertiary-fixed": "#d4e8cb",
+            "secondary": "#7c5800",
+            "background": "#fcf9f2",
+            "surface-dim": "#dcdad3",
+            "surface-container-highest": "#e5e2db",
+            "surface-bright": "#fcf9f2",
+            "inverse-surface": "#31312c",
+            "tertiary": "#4a5b45",
+            "on-primary-fixed": "#3e0500",
+            "primary": "#943b29",
+            "surface-container-high": "#ebe8e1",
+            "surface": "#fcf9f2",
+            "on-secondary-fixed-variant": "#5e4200",
+            "on-primary-fixed-variant": "#7e2b1a",
+            "on-secondary-fixed": "#271900"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "xs": "4px",
+            "md": "24px",
+            "base": "8px",
+            "lg": "48px",
+            "container-max": "1120px",
+            "sm": "12px",
+            "xl": "80px",
+            "gutter": "24px"
+          },
+          "fontFamily": {
+            "body-md": ["Open Sans"],
+            "label-md": ["Open Sans"],
+            "body-lg": ["Open Sans"],
+            "headline-xl": ["Literata"],
+            "headline-lg-mobile": ["Literata"],
+            "headline-lg": ["Literata"],
+            "headline-md": ["Literata"],
+            "caption": ["Open Sans"]
+          },
+          "fontSize": {
+            "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "label-md": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "headline-xl": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["28px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "headline-lg": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "headline-md": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+            "caption": ["12px", { "lineHeight": "1.4", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+
+    .sun-baked-shadow {
+      box-shadow: 0 4px 20px -2px rgba(45, 41, 38, 0.08);
+    }
+
+    .custom-bullet::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #943b29;
+      /* Primary Terracotta */
+      border-radius: 50%;
+      margin-right: 12px;
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+  <!-- TopNavBar -->
+  <nav class="bg-background border-b border-outline-variant w-full sticky top-0 z-50">
+    <div class="flex justify-between items-center h-20 px-gutter max-w-container-max mx-auto">
+      <div class="font-headline-md text-headline-md font-bold text-primary">
+        Goura City Montessori
+      </div>
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-lg">
+        <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
+          href="#">Home</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
+          href="#">About</a>
+        <a class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Academics</a>
+        <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
+          href="#">Contact</a>
+        <button
+          class="bg-primary text-on-primary px-md py-xs font-label-md text-label-md border border-primary hover:bg-primary-container transition-all scale-95 duration-150 ease-in-out">
+          Admissions
+        </button>
+      </div>
+      <!-- Mobile Menu Toggle (simplified) -->
+      <button class="md:hidden text-primary">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </nav>
+  <main>
+    <!-- Hero Section -->
+    <header class="py-xl px-gutter max-w-container-max mx-auto text-center">
+      <div
+        class="inline-block px-md py-xs bg-tertiary-fixed text-on-tertiary-fixed-variant font-label-md text-label-md mb-md">
+        ACADEMIC EXCELLENCE
+      </div>
+      <h1 class="font-headline-xl text-headline-xl text-on-surface mb-md">Nurturing Minds, <br /><span
+          class="text-primary">Cultivating Potential.</span></h1>
+      <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+        At Goura City Montessori, we believe that quality education isn't about the quantity of resources, but the depth
+        of care and the precision of our pedagogy.
+      </p>
+    </header>
+    <!-- Vision Section -->
+    <section class="bg-surface-container-low py-xl px-gutter mb-xl">
+      <div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+        <div class="relative aspect-video overflow-hidden border border-outline-variant">
+          <img class="object-cover w-full h-full grayscale-[20%] sepia-[10%]"
+            data-alt="A warm, sunlit Montessori classroom in a traditional brick building. The room features low wooden shelves filled with tactile learning materials, soft woven rugs, and organized workstations. The lighting is natural and inviting, creating a serene environment that emphasizes the school's heritage and focus on quality through simple, natural elements."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhpxZk1U0e4ivYzFYzKXbRIV-tjWXq11dcpWYWF7ewyotb2yMwNKkuorpu0D8WWzQwEP3a__lRWNJshX2KH3hk6dnb08ZFYWgizXynjxgeja82ruKSNS7oVpFbN0Ot1ASxoTSAy1Jf8pXj3GwtlcIihFuB-QH1lPaPiuu6z8LAJSrpzaEYltbWsBDNA436rnuHLTd3j_br8wDshA6zLzNlEh_PNVHZ5tzhyP9C2IXgVs-gwNBclH3CHYBinxXeWA3UjbTeD9pLkZ_l" />
+        </div>
+        <div>
+          <h2 class="font-headline-lg text-headline-lg text-on-surface mb-md">A Holistic Approach</h2>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-md">
+            Our curriculum is designed to foster independence, curiosity, and a lifelong love for learning. Despite our
+            modest infrastructure, we prioritize a high-touch environment where every child is seen and valued.
+          </p>
+          <div class="space-y-sm">
+            <div class="flex items-center gap-sm">
+              <span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
+              <span class="font-label-md text-label-md">Value-Based Education</span>
+            </div>
+            <div class="flex items-center gap-sm">
+              <span class="material-symbols-outlined text-primary" data-icon="psychology">psychology</span>
+              <span class="font-label-md text-label-md">Cognitive &amp; Emotional Growth</span>
+            </div>
+            <div class="flex items-center gap-sm">
+              <span class="material-symbols-outlined text-primary" data-icon="groups">groups</span>
+              <span class="font-label-md text-label-md">Community-Focused Learning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Curriculum Breakdown -->
+    <section class="max-w-container-max mx-auto px-gutter mb-xl">
+      <div class="mb-lg">
+        <h2 class="font-headline-lg text-headline-lg text-on-surface mb-xs">Academic Tiers</h2>
+        <div class="h-1 w-20 bg-primary"></div>
+      </div>
+      <!-- Bento-style Grid for Curriculum -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+        <!-- Foundation Level -->
+        <div
+          class="md:col-span-4 border border-outline-variant bg-surface p-md flex flex-col justify-between hover:border-primary transition-colors">
+          <div>
+            <div
+              class="bg-secondary-container text-on-secondary-container w-fit px-sm py-1 font-label-md text-label-md mb-md">
+              FOUNDATION</div>
+            <h3 class="font-headline-md text-headline-md mb-sm">Playground to KG</h3>
+            <p class="font-body-md text-body-md text-on-surface-variant mb-md italic">A gentle introduction to the world
+              through sensory play and socialization.</p>
+            <ul class="space-y-sm mb-lg">
+              <li class="custom-bullet font-body-md text-body-md">Sensory awareness activities</li>
+              <li class="custom-bullet font-body-md text-body-md">Basic motor skill development</li>
+              <li class="custom-bullet font-body-md text-body-md">Language immersion via storytelling</li>
+              <li class="custom-bullet font-body-md text-body-md">Joyful creative expression</li>
+            </ul>
+          </div>
+          <div
+            class="pt-md border-t border-outline-variant text-primary flex items-center gap-xs font-label-md text-label-md">
+            EXPLORE MATERIALS <span class="material-symbols-outlined">arrow_forward</span>
+          </div>
+        </div>
+        <!-- Primary Level -->
+        <div
+          class="md:col-span-8 border border-outline-variant bg-surface-container p-md hover:border-primary transition-colors relative overflow-hidden">
+          <!-- Subtle background decoration -->
+          <div class="absolute top-[-20%] right-[-10%] w-64 h-64 bg-tertiary-fixed opacity-10 rounded-full blur-3xl">
+          </div>
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-md h-full">
+            <div>
+              <div
+                class="bg-primary-container text-on-primary-container w-fit px-sm py-1 font-label-md text-label-md mb-md">
+                PRIMARY SCHOOL</div>
+              <h3 class="font-headline-md text-headline-md mb-sm">Classes 1 - 5</h3>
+              <p class="font-body-md text-body-md text-on-surface-variant mb-md">Building a robust foundation in core
+                literacies while encouraging individual enquiry.</p>
+            </div>
+            <div class="flex flex-col justify-between">
+              <div class="grid grid-cols-1 gap-sm">
+                <div class="bg-white/50 p-sm border border-outline-variant/30">
+                  <h4 class="font-label-md text-label-md text-primary mb-xs">CORE CURRICULUM</h4>
+                  <p class="text-caption font-caption">English, Mathematics, EVS, and Hindi with a focus on conceptual
+                    clarity.</p>
+                </div>
+                <div class="bg-white/50 p-sm border border-outline-variant/30">
+                  <h4 class="font-label-md text-label-md text-primary mb-xs">ENRICHMENT</h4>
+                  <p class="text-caption font-caption">Weekly workshops in music, art, and moral science to build
+                    character.</p>
+                </div>
+              </div>
+              <div class="pt-md lg:text-right">
+                <button
+                  class="bg-on-surface text-surface px-md py-xs font-label-md text-label-md hover:bg-primary transition-all">VIEW
+                  SYLLABUS</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Middle School Level -->
+        <div
+          class="md:col-span-7 border border-outline-variant bg-tertiary-container text-on-tertiary-container p-md hover:opacity-95 transition-all">
+          <div class="flex flex-col md:flex-row gap-md items-start">
+            <div class="flex-1">
+              <div class="bg-tertiary-fixed text-on-tertiary-fixed w-fit px-sm py-1 font-label-md text-label-md mb-md">
+                MIDDLE SCHOOL</div>
+              <h3 class="font-headline-md text-headline-md mb-sm">Classes 6 - 8</h3>
+              <p class="font-body-md text-body-md mb-md opacity-90">Transitioning from foundational knowledge to
+                analytical thinking and application-based learning.</p>
+            </div>
+            <div class="flex-1 space-y-sm">
+              <div class="flex gap-sm">
+                <span class="material-symbols-outlined">science</span>
+                <div>
+                  <h4 class="font-label-md text-label-md uppercase tracking-wider">Science &amp; Tech</h4>
+                  <p class="text-caption font-caption opacity-80">Practical experiments and logic-building.</p>
+                </div>
+              </div>
+              <div class="flex gap-sm">
+                <span class="material-symbols-outlined">menu_book</span>
+                <div>
+                  <h4 class="font-label-md text-label-md uppercase tracking-wider">Literary Arts</h4>
+                  <p class="text-caption font-caption opacity-80">Advanced grammar and creative composition.</p>
+                </div>
+              </div>
+              <div class="flex gap-sm">
+                <span class="material-symbols-outlined">public</span>
+                <div>
+                  <h4 class="font-label-md text-label-md uppercase tracking-wider">Social Sciences</h4>
+                  <p class="text-caption font-caption opacity-80">Understanding history, geography, and civic duty.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Limited Resources, Infinite Care CTA -->
+        <div
+          class="md:col-span-5 bg-secondary-fixed border border-outline-variant p-md flex flex-col justify-center items-center text-center">
+          <span class="material-symbols-outlined text-4xl text-secondary mb-md" data-weight="fill"
+            style="font-variation-settings: 'FILL' 1;">favorite</span>
+          <h3 class="font-headline-md text-headline-md text-on-secondary-fixed mb-sm">Our Quality Guarantee</h3>
+          <p class="font-body-md text-body-md text-on-secondary-fixed-variant mb-md">
+            We believe that the best learning happens through interaction, not expensive equipment. Our teachers are
+            trained to turn every environment into a classroom.
+          </p>
+          <a class="font-label-md text-label-md text-secondary underline underline-offset-4 decoration-2" href="#">Learn
+            about our Pedagogy</a>
+        </div>
+      </div>
+    </section>
+    <!-- Care & Quality Section -->
+    <section class="max-w-container-max mx-auto px-gutter mb-xl">
+      <div class="bg-surface-container-high p-lg border border-outline-variant grid grid-cols-1 md:grid-cols-3 gap-lg">
+        <div class="space-y-sm">
+          <h4 class="font-headline-md text-headline-md text-primary">Small Class Sizes</h4>
+          <p class="font-body-md text-body-md text-on-surface-variant">We maintain a strict teacher-student ratio to
+            ensure that every child receives the personal guidance they deserve.</p>
+        </div>
+        <div class="space-y-sm">
+          <h4 class="font-headline-md text-headline-md text-primary">Resourceful Learning</h4>
+          <p class="font-body-md text-body-md text-on-surface-variant">Our curriculum utilizes local materials and
+            nature to teach complex concepts, fostering environmental consciousness.</p>
+        </div>
+        <div class="space-y-sm">
+          <h4 class="font-headline-md text-headline-md text-primary">Constant Care</h4>
+          <p class="font-body-md text-body-md text-on-surface-variant">Beyond books, we monitor the emotional and
+            physical well-being of our students daily through structured observation.</p>
+        </div>
+      </div>
+    </section>
+    <!-- Final CTA -->
+    <section class="py-xl bg-primary text-on-primary text-center px-gutter">
+      <h2 class="font-headline-xl text-headline-xl mb-md">Ready to start their journey?</h2>
+      <p class="font-body-lg text-body-lg mb-lg max-w-xl mx-auto opacity-90">Applications for the upcoming academic
+        session are now open. Visit us to experience our nurturing environment firsthand.</p>
+      <div class="flex flex-wrap justify-center gap-md">
+        <button
+          class="bg-surface text-primary px-lg py-md font-label-md text-label-md hover:bg-primary-fixed transition-all border border-surface">DOWNLOAD
+          BROCHURE</button>
+        <button
+          class="bg-transparent text-surface border border-surface px-lg py-md font-label-md text-label-md hover:bg-white/10 transition-all">VISIT
+          SCHOOL</button>
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-surface-container-low border-t border-outline-variant w-full">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-md py-xl px-gutter max-w-container-max mx-auto">
+      <div>
+        <div class="font-headline-md text-headline-md text-primary mb-md">Goura City Montessori</div>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-md max-w-xs">Dedicated to providing quality
+          education with heart and heritage in Hamirpur.</p>
+      </div>
+      <div>
+        <h5 class="font-label-md text-label-md text-on-surface mb-md">QUICK LINKS</h5>
+        <ul class="space-y-sm">
+          <li><a
+              class="text-on-surface-variant hover:underline decoration-primary transition-all font-body-md text-body-md"
+              href="#">Privacy Policy</a></li>
+          <li><a
+              class="text-on-surface-variant hover:underline decoration-primary transition-all font-body-md text-body-md"
+              href="#">Terms of Service</a></li>
+          <li><a
+              class="text-on-surface-variant hover:underline decoration-primary transition-all font-body-md text-body-md"
+              href="#">Location</a></li>
+          <li><a
+              class="text-on-surface-variant hover:underline decoration-primary transition-all font-body-md text-body-md"
+              href="#">Sitemap</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5 class="font-label-md text-label-md text-on-surface mb-md">CONTACT US</h5>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-base">NH-70, Hamirpur, Himachal Pradesh</p>
+        <p class="font-body-md text-body-md text-on-surface-variant">info@maagauramontessori.edu</p>
+      </div>
+    </div>
+    <div class="border-t border-outline-variant/30 py-md px-gutter text-center max-w-container-max mx-auto">
+      <p class="font-label-md text-label-md text-on-surface-variant opacity-80">© 2024 Goura City Montessori School,
+        Hamirpur. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    // Simple animation on scroll for bento cards
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0');
+          entry.target.classList.remove('opacity-0', 'translate-y-8');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.border.border-outline-variant').forEach(card => {
+      card.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-8');
+      observer.observe(card);
+    });
+  </script>
+</body>
+
+</html>
