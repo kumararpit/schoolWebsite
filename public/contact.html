@@ -45,11 +45,19 @@
         <span class="material-symbols-outlined">menu</span>
       </button>
     </nav>
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
     <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-header">
+        <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="academics.html">Academics</a>
       <a href="contact.html" class="active">Contact</a>
+      <a href="contact.html"><button class="btn-primary"
+          style="width:100%;margin-top:var(--sp-md);">Admissions</button></a>
     </div>
   </header>
 
@@ -120,7 +128,7 @@
           <!-- Right: Visual/Bento Element -->
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md);">
             <div
-              style="grid-column:span 1;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--outline-variant);height:320px;">
+              style="grid-column:span 1;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--outline-variant);height:280px;">
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqrZZDVMHSGViULm8pARTubFqC1rgQQW7Bdqj9nGdn8U-meUiFZ8V6or8Flpdd7hc-8LZBu9JrnaNgPT4Xz1VlnbADEeFzuyPqQCWNA886xxthJnsjK3YewW731OK_ZdvpfLDCKcLvIZtDm1WU-9uCJd_UA5ItTSVZVV2k08qrVx6R2GTRC5FB7CW7UdoBycvajPK21qhL8hHxO8u4XF298EgOaiiKGUi6cupvF38v05evyHPv8WXS7yNr-HA7uub2KdZlBLaKfFcr"
                 alt="Montessori Classroom"
@@ -153,7 +161,7 @@
     <section class="section-padding fade-in-section">
       <div class="container">
         <div class="contact-grid"
-          style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-xl);align-items:start;">
+          style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-lg);align-items:start;">
           <!-- Left: Contact Information -->
           <div style="display:flex;flex-direction:column;gap:var(--sp-lg);">
             <div>
@@ -161,33 +169,33 @@
               <p class="body-md" style="color:var(--on-surface-variant);">Our office is open Monday to Saturday, 8:00 AM
                 to 2:00 PM for walk-in inquiries.</p>
             </div>
-            <div class="info-cards-grid" style="display:grid;grid-template-columns:4.3fr 5.7fr;gap:var(--sp-md);">
+            <div class="info-cards-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md);">
               <div
-                style="padding:var(--sp-md);border:1px solid var(--outline-variant);background:white;display:flex;align-items:flex-start;gap:var(--sp-base);">
-                <span class="material-symbols-outlined" style="color:var(--primary);">call</span>
-                <div>
+                style="padding:var(--sp-md);border:1px solid var(--outline-variant);background:white;display:flex;align-items:flex-start;gap:var(--sp-base);overflow:hidden;">
+                <span class="material-symbols-outlined" style="color:var(--primary);flex-shrink:0;">call</span>
+                <div style="min-width:0;">
                   <p class="label-md" style="color:var(--primary);">Phone</p>
                   <p class="body-md"><a href="tel:+919450262541" class="dynamic-phone"
-                      style="color:inherit;text-decoration:none;white-space:nowrap;">+91 94502 62541</a></p>
+                      style="color:inherit;text-decoration:none;">+91 94502 62541</a></p>
                 </div>
               </div>
               <div
-                style="padding:var(--sp-md);border:1px solid var(--outline-variant);background:white;display:flex;align-items:flex-start;gap:var(--sp-base);">
-                <span class="material-symbols-outlined" style="color:var(--primary);">mail</span>
-                <div>
+                style="padding:var(--sp-md);border:1px solid var(--outline-variant);background:white;display:flex;align-items:flex-start;gap:var(--sp-base);overflow:hidden;">
+                <span class="material-symbols-outlined" style="color:var(--primary);flex-shrink:0;">mail</span>
+                <div style="min-width:0;">
                   <p class="label-md" style="color:var(--primary);">Email</p>
-                  <p class="body-md"><a href="mailto:gauracitymontessori@gmail.com" class="dynamic-email"
-                      style="color:inherit;text-decoration:none;white-space:nowrap;">gauracitymontessori@gmail.com</a>
+                  <p class="body-md" style="overflow-wrap:break-word;word-break:break-all;"><a href="mailto:gauracitymontessori@gmail.com" class="dynamic-email"
+                      style="color:inherit;text-decoration:none;">gauracitymontessori@gmail.com</a>
                   </p>
                 </div>
               </div>
               <a href="https://www.google.com/maps/place/Gaura+City+Montessori/@25.9652814,80.1351464,17z/data=!3m1!4b1!4m6!3m5!1s0x399cfdc88671e34f:0x729d6f315a3fd9b7!8m2!3d25.9652814!4d80.1351464!16s%2Fg%2F11s8zf99yz!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDYwMS4wIKXMDSoASAFQAw%3D%3D"
-                target="_blank" class="dynamic-map-link"
-                style="grid-column:span 2;padding:var(--sp-md);border:1px solid var(--outline-variant);background:white;display:flex;align-items:flex-start;gap:var(--sp-base);text-decoration:none;color:inherit;">
-                <span class="material-symbols-outlined" style="color:var(--primary);">location_on</span>
-                <div>
+                target="_blank" class="dynamic-map-link info-span-2"
+                style="grid-column:span 2;padding:var(--sp-md);border:1px solid var(--outline-variant);background:white;display:flex;align-items:flex-start;gap:var(--sp-base);text-decoration:none;color:inherit;overflow:hidden;">
+                <span class="material-symbols-outlined" style="color:var(--primary);flex-shrink:0;">location_on</span>
+                <div style="min-width:0;">
                   <p class="label-md" style="color:var(--primary);">Address</p>
-                  <p class="body-md dynamic-address">Civil Lines, Near District Hospital, Hamirpur, Uttar Pradesh 210301
+                  <p class="body-md dynamic-address" style="overflow-wrap:break-word;">Civil Lines, Near District Hospital, Hamirpur, Uttar Pradesh 210301
                   </p>
                 </div>
               </a>
@@ -216,7 +224,7 @@
             style="padding:var(--sp-lg);background:white;border:1px solid var(--outline-variant);box-shadow:var(--sun-baked-shadow);">
             <h3 class="headline-md" style="margin-bottom:var(--sp-md);">Admission Inquiry Form</h3>
             <form id="inquiry-form" style="display:flex;flex-direction:column;gap:var(--sp-md);">
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md);">
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md);" class="form-grid-2">
                 <div class="form-group" style="margin-bottom:0;">
                   <label>Parent's Name</label>
                   <input type="text" id="parent-name" placeholder="John Doe" required />
@@ -305,9 +313,24 @@
   </style>
   <script>
     // Mobile menu toggle
-    document.getElementById('mobile-toggle').addEventListener('click', function () {
-      document.getElementById('mobile-nav').classList.toggle('open');
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileOverlay = document.getElementById('mobile-nav-overlay');
+    function openMobileNav() {
+      mobileNav.classList.add('open'); mobileOverlay.classList.add('open');
+      mobileToggle.innerHTML = '<span class="material-symbols-outlined">close</span>';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileNav() {
+      mobileNav.classList.remove('open'); mobileOverlay.classList.remove('open');
+      mobileToggle.innerHTML = '<span class="material-symbols-outlined">menu</span>';
+      document.body.style.overflow = '';
+    }
+    mobileToggle.addEventListener('click', function () {
+      mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
     });
+    mobileOverlay.addEventListener('click', closeMobileNav);
+    document.getElementById('mobile-nav-close').addEventListener('click', closeMobileNav);
 
     // Scroll fade-in
     const observer = new IntersectionObserver((entries) => {

@@ -2,7 +2,8 @@
  * Goura City Montessori - Dynamic Site Settings Helper
  * 
  * Fetches configured variables from '/api/settings' and populates them into designated DOM elements.
- * Features a strict graceful fallback: if backend is unreachable, the original hardcoded HTML content is preserved.
+ * Alert banner is hidden by CSS default; this script decides whether to show it.
+ * Fallback: if backend is unreachable, banner is shown with its hardcoded HTML content.
  */
 
 async function initDynamicSettings() {
@@ -10,10 +11,20 @@ async function initDynamicSettings() {
     const response = await fetch('/api/settings');
     if (!response.ok) {
       console.warn('API returned non-OK status. Preserving HTML hardcoded defaults.');
+      // Show banner with default HTML content as fallback
+      document.querySelectorAll('.alert-banner').forEach(el => {
+        el.style.display = 'block';
+      });
       return;
     }
     const settings = await response.json();
-    if (!settings || typeof settings !== 'object') return;
+    if (!settings || typeof settings !== 'object') {
+      // Show banner with default HTML content as fallback
+      document.querySelectorAll('.alert-banner').forEach(el => {
+        el.style.display = 'block';
+      });
+      return;
+    }
 
     // 1. Phone Numbers Update
     if (settings.phone) {
@@ -50,19 +61,25 @@ async function initDynamicSettings() {
       });
     }
 
-    // 5. Alert Banner Text & Visibility Update
+    // 5. Alert Banner Text Update
     if (settings.announcement) {
       document.querySelectorAll('.dynamic-announcement').forEach(el => {
         el.textContent = settings.announcement;
       });
     }
 
-    const showBanner = (settings.announcement_enabled !== 'false' && settings.announcement_enabled !== false);
+    // 6. Alert Banner Visibility — only show if explicitly enabled
+    const showBanner = (settings.announcement_enabled === true || settings.announcement_enabled === 'true');
     document.querySelectorAll('.alert-banner').forEach(el => {
       el.style.display = showBanner ? 'block' : 'none';
     });
+
   } catch (err) {
     console.warn('Failed to connect to backend configuration API. Serving static HTML content defaults.', err);
+    // Show banner with default HTML content as fallback
+    document.querySelectorAll('.alert-banner').forEach(el => {
+      el.style.display = 'block';
+    });
   }
 }
 

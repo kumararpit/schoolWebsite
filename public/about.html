@@ -45,11 +45,19 @@
         <span class="material-symbols-outlined">menu</span>
       </button>
     </nav>
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
     <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-header">
+        <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
       <a href="index.html">Home</a>
       <a href="about.html" class="active">About</a>
       <a href="academics.html">Academics</a>
       <a href="contact.html">Contact</a>
+      <a href="contact.html"><button class="btn-primary"
+          style="width:100%;margin-top:var(--sp-md);">Admissions</button></a>
     </div>
   </header>
 
@@ -66,7 +74,7 @@
               From Playground to Class 8, Goura City Montessori in Hamirpur provides a sunlit environment where
               traditional values meet the freedom of the Montessori method.
             </p>
-            <div class="flex gap-md">
+            <div style="display:flex;flex-wrap:wrap;gap:var(--sp-md);">
               <div class="flex items-center gap-base" style="color:var(--tertiary);">
                 <span class="material-symbols-outlined">verified</span>
                 <span class="label-md">Certified Montessori</span>
@@ -151,8 +159,8 @@
         </div>
         <div class="bento-grid" style="display:grid;grid-template-columns:repeat(12,1fr);gap:var(--sp-md);">
           <!-- Hands-on Knowledge -->
-          <div
-            style="grid-column:span 8;background:var(--background);border:1px solid var(--outline-variant);padding:var(--sp-lg);border-radius:var(--radius-xl);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative;">
+          <div class="bento-span-8"
+            style="background:var(--background);border:1px solid var(--outline-variant);padding:var(--sp-lg);border-radius:var(--radius-xl);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative;min-height:200px;">
             <div style="position:relative;z-index:1;">
               <h3 class="headline-md" style="color:var(--primary);margin-bottom:var(--sp-base);">Hands-on Knowledge</h3>
               <p class="body-md" style="color:var(--on-surface-variant);max-width:400px;">We believe that the hand is
@@ -165,8 +173,8 @@
               style="position:absolute;right:0;bottom:0;width:50%;height:100%;object-fit:cover;opacity:0.1;" />
           </div>
           <!-- Community Rooted -->
-          <div
-            style="grid-column:span 4;background:var(--tertiary-container);color:var(--on-tertiary-container);padding:var(--sp-lg);border-radius:var(--radius-xl);display:flex;flex-direction:column;justify-content:center;">
+          <div class="bento-span-4"
+            style="background:var(--tertiary-container);color:var(--on-tertiary-container);padding:var(--sp-lg);border-radius:var(--radius-xl);display:flex;flex-direction:column;justify-content:center;">
             <span class="material-symbols-outlined"
               style="font-size:36px;margin-bottom:var(--sp-md);">diversity_3</span>
             <h3 class="headline-md" style="margin-bottom:var(--sp-base);">Community Rooted</h3>
@@ -174,15 +182,15 @@
               to the local Hamirpur culture while encouraging global curiosity.</p>
           </div>
           <!-- Respect -->
-          <div
-            style="grid-column:span 4;background:var(--secondary-container);color:var(--on-secondary-container);padding:var(--sp-lg);border-radius:var(--radius-xl);">
+          <div class="bento-span-4"
+            style="background:var(--secondary-container);color:var(--on-secondary-container);padding:var(--sp-lg);border-radius:var(--radius-xl);">
             <h3 class="headline-md" style="margin-bottom:var(--sp-base);">Respect</h3>
             <p class="body-md" style="opacity:0.9;">Every student is treated as an individual with their own rhythm,
               interests, and innate dignity.</p>
           </div>
           <!-- Prepared Environment -->
-          <div
-            style="grid-column:span 8;background:var(--background);border:1px solid var(--outline-variant);padding:var(--sp-lg);border-radius:var(--radius-xl);display:flex;align-items:center;gap:var(--sp-md);">
+          <div class="bento-span-8"
+            style="background:var(--background);border:1px solid var(--outline-variant);padding:var(--sp-lg);border-radius:var(--radius-xl);display:flex;align-items:center;gap:var(--sp-md);">
             <div
               style="width:96px;height:96px;border-radius:50%;background:var(--surface-variant);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
               <span class="material-symbols-outlined" style="color:var(--primary);font-size:36px;">home_work</span>
@@ -300,9 +308,24 @@
     }
   </style>
   <script>
-    document.getElementById('mobile-toggle').addEventListener('click', function () {
-      document.getElementById('mobile-nav').classList.toggle('open');
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileOverlay = document.getElementById('mobile-nav-overlay');
+    function openMobileNav() {
+      mobileNav.classList.add('open'); mobileOverlay.classList.add('open');
+      mobileToggle.innerHTML = '<span class="material-symbols-outlined">close</span>';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileNav() {
+      mobileNav.classList.remove('open'); mobileOverlay.classList.remove('open');
+      mobileToggle.innerHTML = '<span class="material-symbols-outlined">menu</span>';
+      document.body.style.overflow = '';
+    }
+    mobileToggle.addEventListener('click', function () {
+      mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
     });
+    mobileOverlay.addEventListener('click', closeMobileNav);
+    document.getElementById('mobile-nav-close').addEventListener('click', closeMobileNav);
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });

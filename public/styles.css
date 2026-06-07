@@ -84,6 +84,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -93,6 +94,7 @@ body {
   color: var(--on-background);
   background-color: var(--background);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 ::selection {
@@ -286,6 +288,10 @@ button {
   box-shadow: var(--sun-baked-shadow);
 }
 
+/* --- Alert Banner (hidden by default, shown by JS) --- */
+.alert-banner {
+  display: none;
+}
 /* --- Custom Bullet --- */
 .custom-bullet {
   display: flex;
@@ -687,22 +693,121 @@ button {
   transform: translateY(0);
 }
 
+/* ===== BENTO GRID SPAN CLASSES ===== */
+/* These classes set grid-column on desktop and are overridden at breakpoints */
+.bento-span-4  { grid-column: span 4; }
+.bento-span-5  { grid-column: span 5; }
+.bento-span-7  { grid-column: span 7; }
+.bento-span-8  { grid-column: span 8; }
+.bento-span-12 { grid-column: span 12; }
+
+/* On tablet/mobile, bento-grid children are overridden in media queries */
+
 /* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
+
+/* --- Tablet (481px – 1023px) --- */
+@media (max-width: 1023px) {
+  :root {
+    --gutter: 20px;
+    --sp-xl: 56px;
+    --sp-lg: 36px;
+  }
+
   .headline-xl {
-    font-size: 32px;
+    font-size: 36px;
   }
 
   .headline-lg {
+    font-size: 26px;
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-lg);
+  }
+
+  /* Bento grids → 2-col on tablet */
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Curriculum grid → 2-col */
+  .curriculum-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Levels grid → 2-col */
+  .levels-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Care grid → 2-col */
+  .care-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Timeline → 2-col */
+  .timeline-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Nav logo text: shorten */
+  .nav-logo {
+    font-size: 18px;
+  }
+
+  /* Bento/curriculum child span resets on tablet (2-col grid, so span 1 each) */
+  .bento-span-4,
+  .bento-span-5,
+  .bento-span-7,
+  .bento-span-8,
+  .bento-span-12 {
+    grid-column: span 1;
+  }
+}
+
+/* --- Mobile (≤ 768px) --- */
+@media (max-width: 768px) {
+  :root {
+    --gutter: 16px;
+    --sp-xl: 48px;
+    --sp-lg: 32px;
+    --sp-md: 20px;
+  }
+
+  .headline-xl {
     font-size: 28px;
   }
 
+  .headline-lg {
+    font-size: 22px;
+  }
+
   .headline-md {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .body-lg {
     font-size: 16px;
+  }
+
+  /* ---- Nav ---- */
+  .nav-logo {
+    font-size: 15px;
+    gap: 8px;
+  }
+
+  .nav-logo img {
+    height: 40px;
+    width: 40px;
+  }
+
+  .nav-bar {
+    height: 64px;
   }
 
   .nav-links {
@@ -713,6 +818,90 @@ button {
     display: block;
   }
 
+  /* ---- Mobile right-side drawer ---- */
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(80vw, 300px);
+    background: var(--background);
+    border-left: 1px solid var(--outline-variant);
+    padding: var(--sp-md);
+    gap: 0;
+    z-index: 200;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: -8px 0 32px rgba(0,0,0,0.12);
+    overflow-y: auto;
+  }
+
+  .mobile-nav.open {
+    transform: translateX(0);
+  }
+
+  .mobile-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: var(--sp-sm);
+    margin-bottom: var(--sp-md);
+    border-bottom: 1px solid var(--outline-variant);
+  }
+
+  .mobile-nav-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--sp-xs);
+    display: flex;
+    align-items: center;
+    color: var(--on-surface);
+    border-radius: 50%;
+    transition: background 0.2s;
+  }
+
+  .mobile-nav-close:hover {
+    background: var(--surface-container-low);
+  }
+
+  /* Overlay backdrop */
+  .mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+  }
+
+  .mobile-nav-overlay.open {
+    display: block;
+  }
+
+  .mobile-nav a {
+    color: var(--on-surface-variant);
+    font-size: 16px;
+    font-weight: 600;
+    padding: var(--sp-md) var(--sp-base);
+    border-bottom: 1px solid var(--outline-variant);
+    transition: color 0.2s, background 0.2s;
+    border-radius: var(--radius-md);
+  }
+
+  .mobile-nav a.active {
+    color: var(--primary);
+    background: var(--primary-fixed);
+  }
+
+  .mobile-nav a:hover {
+    color: var(--primary);
+    background: var(--surface-container-low);
+  }
+
+  /* ---- Grid helpers ---- */
   .grid-2,
   .grid-3,
   .grid-4 {
@@ -723,37 +912,48 @@ button {
     grid-template-columns: 1fr;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
+  /* ---- Section spacing ---- */
   .section-padding {
     padding: var(--sp-lg) 0;
   }
 
+  /* ---- Hero ---- */
   .hero-content {
     grid-template-columns: 1fr !important;
+    gap: var(--sp-md) !important;
   }
 
   .hero-img-wrapper {
     display: none;
   }
 
+  /* ---- CTA buttons ---- */
   .cta-buttons {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
   }
 
+  .cta-buttons button,
+  .cta-buttons a {
+    width: 100%;
+  }
+
+  .btn-cta-light,
+  .btn-cta-outline {
+    padding: var(--sp-base) var(--sp-md);
+    width: 100%;
+    text-align: center;
+    display: block;
+  }
+
+  /* ---- All multi-col grids → single col ---- */
   .contact-grid {
-    grid-template-columns: 1fr !important;
-  }
-
-  .info-cards-grid {
     grid-template-columns: 1fr !important;
   }
 
   .bento-grid {
     grid-template-columns: 1fr !important;
+    min-height: unset !important;
   }
 
   .timeline-grid {
@@ -780,41 +980,81 @@ button {
     grid-template-columns: 1fr !important;
   }
 
-  .mobile-nav {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 80px;
-    left: 0;
-    right: 0;
-    background: var(--background);
-    border-bottom: 1px solid var(--outline-variant);
-    padding: var(--sp-md);
-    gap: var(--sp-md);
-    z-index: 49;
-    transform: translateY(-120%);
-    transition: transform 0.3s;
+  /* ---- Bento grid child span resets ---- */
+  .bento-grid > div,
+  .bento-grid > article {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
   }
 
-  .mobile-nav.open {
-    transform: translateY(0);
+  /* ---- Curriculum grid child span resets ---- */
+  .curriculum-grid > div {
+    grid-column: span 1 !important;
   }
 
-  .mobile-nav a {
-    color: var(--on-surface-variant);
-    font-size: 16px;
-    font-weight: 600;
-    padding: var(--sp-base) 0;
-    border-bottom: 1px solid var(--outline-variant);
+  /* ---- Footer ---- */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    padding: var(--sp-lg) var(--gutter);
   }
 
-  .mobile-nav a.active {
-    color: var(--primary);
+  .footer-links-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* ---- News articles ---- */
+  .news-layout > div:first-child {
+    min-width: unset !important;
+    flex: none !important;
+  }
+
+  /* ---- Contact info grid: stack & reset span ---- */
+  .info-cards-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .info-span-2 {
+    grid-column: span 1 !important;
+  }
+
+  /* ---- Form double-column → single ---- */
+  .form-grid-2 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ---- Alert banner ---- */
+  .alert-banner {
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+    line-height: 1.4;
+  }
+}
+
+/* --- Small phones (≤ 400px) --- */
+@media (max-width: 400px) {
+  .nav-logo span,
+  .nav-logo-text {
+    display: none;
+  }
+
+  .headline-xl {
+    font-size: 24px;
+  }
+
+  .nav-logo {
+    font-size: 13px;
   }
 }
 
 @media (min-width: 769px) {
   .mobile-nav {
     display: none !important;
+  }
+}
+
+/* --- Large Desktop (≥ 1280px) --- */
+@media (min-width: 1280px) {
+  :root {
+    --sp-xl: 96px;
   }
 }

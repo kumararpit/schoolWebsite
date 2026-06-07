@@ -45,11 +45,19 @@
         <span class="material-symbols-outlined">menu</span>
       </button>
     </nav>
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
     <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-header">
+        <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="academics.html" class="active">Academics</a>
       <a href="contact.html">Contact</a>
+      <a href="contact.html"><button class="btn-primary"
+          style="width:100%;margin-top:var(--sp-md);">Admissions</button></a>
     </div>
   </header>
 
@@ -113,9 +121,8 @@
         </div>
         <div class="curriculum-grid" style="display:grid;grid-template-columns:repeat(12,1fr);gap:var(--sp-md);">
           <!-- Foundation Level -->
-          <div
-            style="grid-column:span 4;border:1px solid var(--outline-variant);background:var(--surface);padding:var(--sp-md);display:flex;flex-direction:column;justify-content:space-between;transition:border-color 0.3s;"
-            class="curriculum-card">
+          <div class="bento-span-4 curriculum-card"
+            style="border:1px solid var(--outline-variant);background:var(--surface);padding:var(--sp-md);display:flex;flex-direction:column;justify-content:space-between;transition:border-color 0.3s;">
             <div>
               <div class="tag tag-secondary" style="margin-bottom:var(--sp-md);">FOUNDATION</div>
               <h3 class="headline-md" style="margin-bottom:var(--sp-sm);">Playground to KG</h3>
@@ -135,9 +142,8 @@
             </div>
           </div>
           <!-- Primary Level -->
-          <div
-            style="grid-column:span 8;border:1px solid var(--outline-variant);background:var(--surface-container);padding:var(--sp-md);position:relative;overflow:hidden;transition:border-color 0.3s;"
-            class="curriculum-card">
+          <div class="bento-span-8 curriculum-card"
+            style="border:1px solid var(--outline-variant);background:var(--surface-container);padding:var(--sp-md);position:relative;overflow:hidden;transition:border-color 0.3s;">
             <div
               style="position:absolute;top:-20%;right:-10%;width:256px;height:256px;background:var(--tertiary-fixed);opacity:0.1;border-radius:50%;filter:blur(48px);">
             </div>
@@ -171,11 +177,10 @@
             </div>
           </div>
           <!-- Middle School Level -->
-          <div
-            style="grid-column:span 7;background:var(--tertiary-container);color:var(--on-tertiary-container);padding:var(--sp-md);transition:opacity 0.3s;"
-            class="curriculum-card">
+          <div class="bento-span-7 curriculum-card"
+            style="background:var(--tertiary-container);color:var(--on-tertiary-container);padding:var(--sp-md);transition:opacity 0.3s;">
             <div style="display:flex;gap:var(--sp-md);flex-wrap:wrap;">
-              <div style="flex:1;min-width:200px;">
+              <div style="flex:1;min-width:160px;">
                 <div class="tag"
                   style="background:var(--tertiary-fixed);color:var(--on-tertiary-fixed-variant);margin-bottom:var(--sp-md);">
                   MIDDLE SCHOOL</div>
@@ -183,7 +188,7 @@
                 <p class="body-md" style="margin-bottom:var(--sp-md);opacity:0.9;">Transitioning from foundational
                   knowledge to analytical thinking and application-based learning.</p>
               </div>
-              <div style="flex:1;min-width:200px;display:flex;flex-direction:column;gap:var(--sp-sm);">
+              <div style="flex:1;min-width:160px;display:flex;flex-direction:column;gap:var(--sp-sm);">
                 <div class="flex gap-sm">
                   <span class="material-symbols-outlined">science</span>
                   <div>
@@ -209,8 +214,8 @@
             </div>
           </div>
           <!-- Quality Guarantee -->
-          <div
-            style="grid-column:span 5;background:var(--secondary-fixed);border:1px solid var(--outline-variant);padding:var(--sp-md);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+          <div class="bento-span-5"
+            style="background:var(--secondary-fixed);border:1px solid var(--outline-variant);padding:var(--sp-md);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
             <span class="material-symbols-outlined"
               style="font-size:36px;color:var(--secondary);margin-bottom:var(--sp-md);font-variation-settings:'FILL' 1;">favorite</span>
             <h3 class="headline-md" style="color:var(--on-secondary-fixed);margin-bottom:var(--sp-sm);">Our Quality
@@ -314,9 +319,24 @@
     }
   </style>
   <script>
-    document.getElementById('mobile-toggle').addEventListener('click', function () {
-      document.getElementById('mobile-nav').classList.toggle('open');
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileOverlay = document.getElementById('mobile-nav-overlay');
+    function openMobileNav() {
+      mobileNav.classList.add('open'); mobileOverlay.classList.add('open');
+      mobileToggle.innerHTML = '<span class="material-symbols-outlined">close</span>';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileNav() {
+      mobileNav.classList.remove('open'); mobileOverlay.classList.remove('open');
+      mobileToggle.innerHTML = '<span class="material-symbols-outlined">menu</span>';
+      document.body.style.overflow = '';
+    }
+    mobileToggle.addEventListener('click', function () {
+      mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
     });
+    mobileOverlay.addEventListener('click', closeMobileNav);
+    document.getElementById('mobile-nav-close').addEventListener('click', closeMobileNav);
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1 });

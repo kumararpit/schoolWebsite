@@ -22,7 +22,7 @@
 
   <!-- Alert Banner -->
   <div class="alert-banner"
-    style="background:var(--primary);color:var(--on-primary);text-align:center;padding:10px var(--gutter);font-size:13px;font-weight:600;letter-spacing:0.03em;position:relative;z-index:1001;">
+    style="background:var(--primary);color:var(--on-primary);text-align:center;padding:10px var(--gutter);font-size:13px;font-weight:600;letter-spacing:0.03em;position:relative;z-index:1001;word-break:break-word;">
     <span class="dynamic-announcement">Admissions Open for playground to Class 8! Estd. 2022. Experience premium
       Montessori education.</span>
   </div>
@@ -45,12 +45,19 @@
         <span class="material-symbols-outlined">menu</span>
       </button>
     </nav>
+    <div class="mobile-nav-overlay" id="mobile-nav-overlay"></div>
     <div class="mobile-nav" id="mobile-nav">
+      <div class="mobile-nav-header">
+        <button class="mobile-nav-close" id="mobile-nav-close" aria-label="Close menu">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
       <a href="index.html" class="active">Home</a>
       <a href="about.html">About</a>
       <a href="academics.html">Academics</a>
       <a href="contact.html">Contact</a>
-      <a href="contact.html"><button class="btn-primary" style="width:100%">Admissions</button></a>
+      <a href="contact.html"><button class="btn-primary"
+          style="width:100%;margin-top:var(--sp-md);">Admissions</button></a>
     </div>
   </header>
 
@@ -60,13 +67,13 @@
       style="position:relative;width:100%;min-height:80vh;display:flex;align-items:center;overflow:hidden;">
       <div style="position:absolute;inset:0;z-index:0;">
         <div
-          style="position:absolute;inset:0;background:linear-gradient(to right, var(--background), rgba(252,249,242,0.8), transparent);z-index:1;">
+          style="position:absolute;inset:0;background:linear-gradient(to right, var(--background), rgba(252,249,242,0.85), transparent);z-index:1;">
         </div>
         <img
           src="https://lh3.googleusercontent.com/aida-public/AB6AXuD76Rkv7Cr75QVv4vLsXrpAgmMqDGE7pd_gL14WWMgabhPPseXtL8loQvZ-Wp6b8qQQ4XFKzY80DE9r0xC8AjFKoj_Unj9Rjo0vZMfty79tuCtValObbz2-cd7YLXV_pTba0AB2q0aQtAjZCN87zzi2CFjeiatgf-n5TmP_WEE-43JHST1DfeL2Bcy6V4HYOteIjsPQXm2n4QYgm76VXIGNhWP74dx4ykuj6e35xkSxCtitNEnKxUhkI75lW5xAEB3gc15-AJBkkH7f"
           alt="Sunlit Montessori classroom" style="width:100%;height:100%;object-fit:cover;" />
       </div>
-      <div class="container" style="position:relative;z-index:2;">
+      <div class="container" style="position:relative;z-index:2;padding-top:var(--sp-lg);padding-bottom:var(--sp-lg);">
         <div class="hero-content"
           style="display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-lg);align-items:center;">
           <div style="display:flex;flex-direction:column;gap:var(--sp-md);">
@@ -78,10 +85,13 @@
               grounded, community-focused education that honors our heritage while preparing students for a global
               future.
             </p>
-            <div class="flex flex-wrap gap-base" style="padding-top:var(--sp-base);">
-              <a href="academics.html"><button class="btn-primary" style="padding:var(--sp-sm) var(--sp-lg);">Explore
+            <div class="hero-cta-wrap"
+              style="display:flex;flex-wrap:wrap;gap:var(--sp-base);padding-top:var(--sp-base);">
+              <a href="academics.html" style="flex:1;min-width:160px;"><button class="btn-primary"
+                  style="width:100%;padding:var(--sp-sm) var(--sp-md);">Explore
                   Our Levels</button></a>
-              <a href="contact.html"><button class="btn-secondary" style="padding:var(--sp-sm) var(--sp-lg);">Visit Our
+              <a href="contact.html" style="flex:1;min-width:160px;"><button class="btn-secondary"
+                  style="width:100%;padding:var(--sp-sm) var(--sp-md);">Visit Our
                   Campus</button></a>
             </div>
           </div>
@@ -97,11 +107,10 @@
           <p class="body-md" style="color:var(--on-surface-variant);margin-top:var(--sp-sm);">Built on the pillars of
             respect, independence, and social responsibility.</p>
         </div>
-        <div class="bento-grid"
-          style="display:grid;grid-template-columns:repeat(12,1fr);gap:var(--sp-md);min-height:600px;">
+        <div class="bento-grid" style="display:grid;grid-template-columns:repeat(12,1fr);gap:var(--sp-md);">
           <!-- Feature 1 -->
-          <div
-            style="grid-column:span 7;background:var(--surface-container-low);border:1px solid var(--outline-variant);padding:var(--sp-lg);border-radius:var(--radius-xl);display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;">
+          <div class="bento-span-7"
+            style="background:var(--surface-container-low);border:1px solid var(--outline-variant);padding:var(--sp-lg);border-radius:var(--radius-xl);display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;min-height:200px;">
             <div style="position:absolute;top:0;right:0;padding:var(--sp-lg);">
               <span class="material-symbols-outlined" style="color:var(--primary);font-size:36px;">local_library</span>
             </div>
@@ -112,8 +121,8 @@
               tactile exploration.</p>
           </div>
           <!-- Feature 2 -->
-          <div
-            style="grid-column:span 5;background:var(--tertiary-container);color:var(--on-tertiary-container);border:1px solid var(--outline-variant);padding:var(--sp-lg);border-radius:var(--radius-xl);display:flex;flex-direction:column;justify-content:space-between;">
+          <div class="bento-span-5"
+            style="background:var(--tertiary-container);color:var(--on-tertiary-container);border:1px solid var(--outline-variant);padding:var(--sp-lg);border-radius:var(--radius-xl);display:flex;flex-direction:column;justify-content:space-between;min-height:200px;">
             <span class="material-symbols-outlined"
               style="color:var(--tertiary-fixed);font-size:36px;font-variation-settings:'FILL' 1;">diversity_3</span>
             <div>
@@ -123,15 +132,15 @@
             </div>
           </div>
           <!-- Feature 3 -->
-          <div
-            style="grid-column:span 4;background:var(--secondary-container);color:var(--on-secondary-container);border:1px solid var(--outline-variant);padding:var(--sp-lg);border-radius:var(--radius-xl);display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;gap:var(--sp-sm);">
+          <div class="bento-span-4"
+            style="background:var(--secondary-container);color:var(--on-secondary-container);border:1px solid var(--outline-variant);padding:var(--sp-lg);border-radius:var(--radius-xl);display:flex;flex-direction:column;align-items:center;text-align:center;justify-content:center;gap:var(--sp-sm);">
             <span class="material-symbols-outlined" style="font-size:48px;">auto_awesome</span>
             <h3 class="headline-md">Holistic Growth</h3>
             <p class="body-md">Focusing on physical, emotional, and social development alongside academics.</p>
           </div>
           <!-- Feature 4 -->
-          <div
-            style="grid-column:span 8;background:var(--surface-variant);border:1px solid var(--outline-variant);padding:var(--sp-lg);border-radius:var(--radius-xl);display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md);align-items:center;">
+          <div class="bento-span-8"
+            style="background:var(--surface-variant);border:1px solid var(--outline-variant);padding:var(--sp-lg);border-radius:var(--radius-xl);display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md);align-items:center;">
             <div>
               <h3 class="headline-md" style="color:var(--on-surface);">Modern Amenities</h3>
               <ul
@@ -224,7 +233,7 @@
     <section class="section-padding fade-in-section" id="news">
       <div class="container">
         <div class="news-layout flex gap-xl items-start" style="flex-wrap:wrap;">
-          <div style="flex:0 0 30%;min-width:240px;">
+          <div style="flex:0 0 28%;min-width:220px;">
             <h2 class="headline-lg" style="color:var(--on-surface);">Latest News</h2>
             <p class="body-md"
               style="color:var(--on-surface-variant);margin-top:var(--sp-sm);margin-bottom:var(--sp-lg);">Stay updated
@@ -379,9 +388,29 @@
   </style>
   <script>
     // Mobile menu toggle
-    document.getElementById('mobile-toggle').addEventListener('click', function () {
-      document.getElementById('mobile-nav').classList.toggle('open');
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const mobileOverlay = document.getElementById('mobile-nav-overlay');
+
+    function openMobileNav() {
+      mobileNav.classList.add('open');
+      mobileOverlay.classList.add('open');
+      mobileToggle.innerHTML = '<span class="material-symbols-outlined">close</span>';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+      mobileOverlay.classList.remove('open');
+      mobileToggle.innerHTML = '<span class="material-symbols-outlined">menu</span>';
+      document.body.style.overflow = '';
+    }
+
+    mobileToggle.addEventListener('click', function () {
+      mobileNav.classList.contains('open') ? closeMobileNav() : openMobileNav();
     });
+    mobileOverlay.addEventListener('click', closeMobileNav);
+    document.getElementById('mobile-nav-close').addEventListener('click', closeMobileNav);
 
     // Scroll fade-in
     const observer = new IntersectionObserver((entries) => {

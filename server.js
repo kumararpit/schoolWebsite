@@ -51,6 +51,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // --- API ENDPOINTS ---
 
+// Keep-alive ping endpoint to prevent Render spin-down (hit every 10 min by cron)
+app.get('/api/ping', (req, res) => {
+  res.json({ status: 'ok', message: 'pong', timestamp: Date.now() });
+});
+
 // 1. Admission Inquiry Submission (Public)
 app.post('/api/inquiry', async (req, res) => {
   const { parentName, childName, gradeLevel, phoneNumber, message } = req.body;
