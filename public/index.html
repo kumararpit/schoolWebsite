@@ -238,8 +238,8 @@
             <p class="body-md"
               style="color:var(--on-surface-variant);margin-top:var(--sp-sm);margin-bottom:var(--sp-lg);">Stay updated
               with the happenings at Goura City Montessori.</p>
-            <button
-              style="background:none;color:var(--on-surface);font-weight:600;font-size:14px;letter-spacing:0.05em;border-bottom:2px solid var(--outline);padding-bottom:4px;transition:all 0.2s;">View
+            <button id="view-archives-btn"
+              style="background:none;color:var(--on-surface);font-weight:600;font-size:14px;letter-spacing:0.05em;border-bottom:2px solid var(--outline);padding-bottom:4px;transition:all 0.2s;cursor:pointer;">View
               Archives</button>
           </div>
           <div id="news-cards-container"
@@ -460,7 +460,128 @@
       }
     }
     loadDynamicNews();
+
+    // News Archives Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      let allNewsItems = [];
+      let activeCategory = 'All';
+      let searchQuery = '';
+
+      const archivesModal = document.getElementById('archives-modal');
+      const viewArchivesBtn = document.getElementById('view-archives-btn');
+      const closeArchivesBtn = document.getElementById('close-archives-btn');
+      const archivesOverlay = document.getElementById('archives-modal-overlay');
+      const archiveSearch = document.getElementById('archive-search');
+      const archiveListContainer = document.getElementById('archive-list-container');
+      const filterChips = document.querySelectorAll('.filter-chip');
+
+      function openArchives() {
+        if (archivesModal) archivesModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        loadArchiveData();
+      }
+
+      function closeArchives() {
+        if (archivesModal) archivesModal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+
+      if (viewArchivesBtn) viewArchivesBtn.addEventListener('click', openArchives);
+      if (closeArchivesBtn) closeArchivesBtn.addEventListener('click', closeArchives);
+      if (archivesOverlay) archivesOverlay.addEventListener('click', closeArchives);
+
+      async function loadArchiveData() {
+        try {
+          const res = await fetch('/api/news');
+          if (!res.ok) throw new Error();
+          allNewsItems = await res.json();
+          renderArchive();
+        } catch (err) {
+          if (archiveListContainer) {
+            archiveListContainer.innerHTML = '<p style="text-align:center; color:var(--error); padding:var(--sp-md);">Failed to load news archive.</p>';
+          }
+        }
+      }
+
+      function renderArchive() {
+        const filtered = allNewsItems.filter(item => {
+          const matchesCategory = activeCategory === 'All' || item.category === activeCategory;
+          const matchesSearch = item.title.toLowerCase().includes(searchQuery) || item.content.toLowerCase().includes(searchQuery);
+          return matchesCategory && matchesSearch;
+        });
+
+        if (!archiveListContainer) return;
+
+        if (filtered.length === 0) {
+          archiveListContainer.innerHTML = '<p style="text-align:center; color:var(--on-surface-variant); padding:var(--sp-md);">No archive articles match your criteria.</p>';
+          return;
+        }
+
+        archiveListContainer.innerHTML = filtered.map(item => {
+          const imgHtml = item.imageUrl
+            ? `<img src="${item.imageUrl}" alt="${item.title}" />`
+            : '';
+          return `
+            <div class="archive-item">
+              ${imgHtml}
+              <div class="archive-item-content">
+                <span class="caption" style="color:var(--primary); font-weight:600;">${item.date} • ${item.category}</span>
+                <h3 class="headline-sm" style="color:var(--on-surface); margin:4px 0;">${item.title}</h3>
+                <p class="body-sm" style="color:var(--on-surface-variant); line-height:1.5;">${item.content}</p>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      if (archiveSearch) {
+        archiveSearch.addEventListener('input', (e) => {
+          searchQuery = e.target.value.toLowerCase().trim();
+          renderArchive();
+        });
+      }
+
+      filterChips.forEach(chip => {
+        chip.addEventListener('click', () => {
+          filterChips.forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          activeCategory = chip.getAttribute('data-category');
+          renderArchive();
+        });
+      });
+    });
   </script>
+
+  <!-- News Archives Modal -->
+  <div id="archives-modal" class="archives-modal" style="display: none;">
+    <div id="archives-modal-overlay" class="archives-modal-overlay"></div>
+    <div class="archives-modal-content">
+      <div class="archives-modal-header">
+        <h2 class="headline-md" style="font-family:'Literata', serif; color:var(--primary); margin:0;">News & Announcements Archive</h2>
+        <button id="close-archives-btn" class="archives-close-btn" aria-label="Close Archive">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="archives-modal-body">
+        <div class="archive-controls">
+          <div class="search-box">
+            <span class="material-symbols-outlined search-icon">search</span>
+            <input type="text" id="archive-search" placeholder="Search notices, events..." />
+          </div>
+          <div class="category-filters">
+            <button class="filter-chip active" data-category="All">All</button>
+            <button class="filter-chip" data-category="Event">Events</button>
+            <button class="filter-chip" data-category="Admissions">Admissions</button>
+            <button class="filter-chip" data-category="Announcement">Announcements</button>
+            <button class="filter-chip" data-category="Academic">Academics</button>
+          </div>
+        </div>
+        <div id="archive-list-container" class="archive-list">
+          <p style="text-align:center; color:var(--on-surface-variant); padding:var(--sp-md);">Loading archive feed...</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
