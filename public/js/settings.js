@@ -73,6 +73,13 @@ async function initDynamicSettings() {
     document.querySelectorAll('.alert-banner').forEach(el => {
       el.style.display = showBanner ? 'block' : 'none';
     });
+    
+    // 7. Principal Photo Update
+    if (settings.principal_photo) {
+      document.querySelectorAll('.dynamic-principal-photo').forEach(el => {
+        el.src = settings.principal_photo;
+      });
+    }
 
   } catch (err) {
     console.warn('Failed to connect to backend configuration API. Serving static HTML content defaults.', err);

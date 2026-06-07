@@ -369,42 +369,67 @@
 
     <!-- Tab 3: Site Settings -->
     <section id="tab-settings" class="tab-content">
-      <div class="panel-card" style="max-width:800px;margin:0 auto;">
-        <h2 class="panel-title">Configure Global School Settings</h2>
-        <form id="settings-form" style="display:flex;flex-direction:column;gap:var(--sp-md);">
-          <div class="settings-grid">
-            <div class="form-group">
-              <label for="set-phone">Phone Number</label>
-              <input type="text" id="set-phone" placeholder="+91 94502 62541" required />
+      <div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:var(--sp-md);">
+        
+        <!-- School Settings Card -->
+        <div class="panel-card" style="margin-bottom:0;">
+          <h2 class="panel-title">Configure Global School Settings</h2>
+          <form id="settings-form" style="display:flex;flex-direction:column;gap:var(--sp-md);">
+            <div class="settings-grid">
+              <div class="form-group">
+                <label for="set-phone">Phone Number</label>
+                <input type="text" id="set-phone" placeholder="+91 94502 62541" required />
+              </div>
+              <div class="form-group">
+                <label for="set-email">Email Address</label>
+                <input type="email" id="set-email" placeholder="gauracitymontessori@gmail.com" required />
+              </div>
             </div>
             <div class="form-group">
-              <label for="set-email">Email Address</label>
-              <input type="email" id="set-email" placeholder="gauracitymontessori@gmail.com" required />
+              <label for="set-address">School Campus Address</label>
+              <input type="text" id="set-address" placeholder="Civil Lines, Near Hospital, Hamirpur, UP" required />
             </div>
-          </div>
-          <div class="form-group">
-            <label for="set-address">School Campus Address</label>
-            <input type="text" id="set-address" placeholder="Civil Lines, Near Hospital, Hamirpur, UP" required />
-          </div>
-          <div class="form-group">
-            <label for="set-map">Google Maps Location Link</label>
-            <input type="text" id="set-map" placeholder="https://www.google.com/maps/place/..." required />
-          </div>
-          <div class="form-group"
-            style="flex-direction:row;align-items:center;gap:10px;margin-bottom:12px;cursor:pointer;">
-            <input type="checkbox" id="set-announcement-enabled"
-              style="width:18px;height:18px;cursor:pointer;accent-color:var(--primary);" />
-            <label for="set-announcement-enabled" style="margin:0;cursor:pointer;user-select:none;font-weight:600;">Show
-              Top Alert Banner</label>
-          </div>
-          <div class="form-group">
-            <label for="set-announcement">Alert Banner Text (Scrolling ticker marquee)</label>
-            <textarea id="set-announcement" rows="3" placeholder="Enter important announcement..."></textarea>
-          </div>
-          <button type="submit" class="btn-submit"
-            style="margin-top:0;align-self:flex-start;padding-left:var(--sp-md);padding-right:var(--sp-md);">Save
-            Configuration</button>
-        </form>
+            <div class="form-group">
+              <label for="set-map">Google Maps Location Link</label>
+              <input type="text" id="set-map" placeholder="https://www.google.com/maps/place/..." required />
+            </div>
+            <div class="form-group"
+              style="flex-direction:row;align-items:center;gap:10px;margin-bottom:12px;cursor:pointer;">
+              <input type="checkbox" id="set-announcement-enabled"
+                style="width:18px;height:18px;cursor:pointer;accent-color:var(--primary);" />
+              <label for="set-announcement-enabled" style="margin:0;cursor:pointer;user-select:none;font-weight:600;">Show
+                Top Alert Banner</label>
+            </div>
+            <div class="form-group">
+              <label for="set-announcement">Alert Banner Text (Scrolling ticker marquee)</label>
+              <textarea id="set-announcement" rows="3" placeholder="Enter important announcement..."></textarea>
+            </div>
+            <button type="submit" class="btn-submit"
+              style="margin-top:0;align-self:flex-start;padding-left:var(--sp-md);padding-right:var(--sp-md);">Save
+              Configuration</button>
+          </form>
+        </div>
+
+        <!-- Principal Photo Card -->
+        <div class="panel-card">
+          <h2 class="panel-title">Update Principal Photo</h2>
+          <form id="principal-photo-form" style="display:flex;flex-direction:column;gap:var(--sp-md);">
+            <div style="display:flex;align-items:center;gap:var(--sp-md);flex-wrap:wrap;">
+              <div style="position:relative;width:120px;aspect-ratio:4/5;background:var(--surface-variant);border-radius:var(--radius-default);overflow:hidden;border:1px solid var(--outline-variant);display:flex;justify-content:center;align-items:center;">
+                <img id="principal-preview" src="/images/principal.jpeg" style="width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div style="flex:1;min-width:200px;">
+                <div class="form-group">
+                  <label for="principal-photo-input">Choose Principal Photo</label>
+                  <input type="file" id="principal-photo-input" accept="image/*" required />
+                </div>
+                <p style="font-size:12px;color:var(--on-surface-variant);margin-top:var(--sp-xs);">Supported formats: JPG, PNG, WEBP. Recommend portrait aspect ratio.</p>
+              </div>
+            </div>
+            <button type="submit" class="btn-submit" style="margin-top:0;align-self:flex-start;padding-left:var(--sp-md);padding-right:var(--sp-md);">Upload Photo</button>
+          </form>
+        </div>
+
       </div>
     </section>
   </main>
@@ -588,6 +613,10 @@
         document.getElementById('set-map').value = settings.map_link || '';
         document.getElementById('set-announcement').value = settings.announcement || '';
         document.getElementById('set-announcement-enabled').checked = (settings.announcement_enabled !== 'false' && settings.announcement_enabled !== false);
+        
+        if (settings.principal_photo) {
+          document.getElementById('principal-preview').src = settings.principal_photo;
+        }
       } catch (err) {
         showStatus('Failed to load current configuration settings.', true);
       }
@@ -615,6 +644,32 @@
         }
       } catch (err) {
         showStatus('Network error occurred during update.', true);
+      }
+    });
+
+    document.getElementById('principal-photo-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const imageFile = document.getElementById('principal-photo-input').files[0];
+      if (!imageFile) return;
+
+      const formData = new FormData();
+      formData.append('principalPhoto', imageFile);
+
+      try {
+        const res = await fetch('/api/settings/principal-photo', {
+          method: 'POST',
+          body: formData
+        });
+        if (res.ok) {
+          const data = await res.json();
+          showStatus('Principal photo updated successfully.');
+          document.getElementById('principal-preview').src = data.url;
+          document.getElementById('principal-photo-form').reset();
+        } else {
+          showStatus('Failed to upload principal photo.', true);
+        }
+      } catch (err) {
+        showStatus('Network error occurred during upload.', true);
       }
     });
 

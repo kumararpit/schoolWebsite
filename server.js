@@ -496,6 +496,24 @@ app.post('/api/settings', requireAdmin, async (req, res) => {
   }
 });
 
+// 11. Update Principal Photo (Admin Only)
+app.post('/api/settings/principal-photo', requireAdmin, upload.single('principalPhoto'), async (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ error: 'No photo provided.' });
+  }
+
+  try {
+    const base64Data = req.file.buffer.toString('base64');
+    const photoUrl = `data:${req.file.mimetype};base64,${base64Data}`;
+    
+    await Setting.findOneAndUpdate({ key: 'principal_photo' }, { value: photoUrl }, { upsert: true });
+    res.json({ success: true, message: 'Principal photo updated successfully.', url: photoUrl });
+  } catch (err) {
+    console.error('Error updating principal photo:', err);
+    res.status(500).json({ error: 'Failed to update principal photo.' });
+  }
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
